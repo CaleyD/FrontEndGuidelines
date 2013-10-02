@@ -48,11 +48,11 @@
         * Use delegated events
     * Third-party libraries and plugins
 * [Responsive Design](#responsive-design)
-* [Accessibility]
+* [Accessibility](#accessibility)
     * Standards Compliance
     * Simple Markup
     * WAI-ARIA
-* [Performance]
+* [Performance](#performance)
     * Create Markup on the Server
     * Limit Number of Requests
         * Combine CSS
@@ -61,12 +61,12 @@
     * Optimize inlude order
     * Embed CSS and JS when appropriate
     * Tools to test performance
-* [Principles]
+* [Principles](#principles)
     * Separation of Content, Style, and Behavior
     * Consistency
     * Prefer progressive enhancement to polyfilling
-* [Working With Design]
-* [References]
+* [Working With Design](#workin-with-design)
+* [References](#references)
 
 ## Overview
 
@@ -136,7 +136,7 @@ The following are general guidelines for structuring your HTML markup. Authors a
         </tbody>
     </table>
     ```
-* ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property text-transform:uppercase/lowercase.
+* ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property `text-transform: uppercase/lowercase`.
 
 #### Quoting Attributes
 
@@ -252,7 +252,7 @@ Class and ID names should be `camelCase`
 #theIdName {...}
 ```
 
-State rules added via Javascript should us hyphens between words
+State rules added via Javascript should use hyphens between words
 
 ```css
 .is-visible {...}
@@ -307,7 +307,7 @@ div {
 }
 ```
 
-Specify units (`px, em, %`) unless it is `0` (then omit the units).
+Specify units (`px, em, %`) unless it is `0`
 
 ```css
 padding: 10px 0 15px;
@@ -320,7 +320,7 @@ Specify HEX values for colors
 #FF0138
 ```
 
-Use LESS functions to adjust hue, saturation, lightness, or transparency
+Use LESS functions when adjusting hue, saturation, lightness, or transparency
 
 ```css
 color: fade(#000, 50%);
@@ -335,7 +335,7 @@ a:after {
 }
 ```
 
-CSS3 properties that support layering should on separate lines, with the semi-colon on the last line
+CSS3 properties that support layering should be on separate lines, with the semi-colon on the last line
 
 ```css
 .class {
@@ -348,7 +348,7 @@ CSS3 properties that support layering should on separate lines, with the semi-co
 
 #### Variables
 
-Variables are declared with `@`
+Variables must be declared with `@`
 
 ```css
 @themeColor: #F00;
@@ -436,7 +436,7 @@ Guarded mixins with boolean values that are true do not need `= true`
 .mixin(@boolean) when (@boolean) {...}
 ```
 
-Use the `when not` keyword when specifying falsey booleans
+Use the `when not` keyword when specifying false booleans
 
 ```css
 .mixin(@boolean) when not (@boolean) {...}
@@ -461,14 +461,12 @@ div {
 
 __Make sure you're not redefining mixins that exist globally! Check components > common.less__
 
-
-
 ### Stay Rad
 
 * Don't use inline styles
-* Use semantically descriptive class names (`.orangeButton` is terrible)
+* Use semantically descriptive classnames (`.orangeButton` is terrible)
 * Never nest deeper than three levels (The Inception Rule)
-* Never nest an ID within and ID
+* Never nest an ID within an ID
 * Avoid name spacing with element + class names unless it's a state rule (i.e., `div.class`)
 * Don't repeat yourself (DRY), abstract patterns into reusable mixins and variables
 * Use shorthand whenever possible (`margin` instead of `margin-top` + `margin-right`, etc.)
@@ -940,7 +938,7 @@ ___Just avoid applets and plugins (no more Flash)___
 
 ### Optimize Images
 
-Use [tinypng](tinypng.com) or similar tool to compress `png` files and speed up downloads.
+Use [tinypng](http://tinypng.com) or similar tool to compress `png` files and speed up downloads.
 
 ### Limit # of http requests
 
