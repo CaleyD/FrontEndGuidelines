@@ -784,6 +784,8 @@ jQuery promotes some no-so-great practices. These should be avoided:
     * `$('.item').addClass('is-error')`
     And ___move styling and animation decisions to CSS, where they belong___.
 
+    [Updating styles via class name rather than setting styles from script is also faster](http://jsperf.com/change-class-vs-inline-styling/5)
+
 ### Delegated Event Handlers
 
 
