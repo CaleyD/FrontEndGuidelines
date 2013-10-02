@@ -2,12 +2,12 @@
 
 ## Contents
 
-* [Overview](#overview) 
+* [Overview](#overview)
 * [Supported Browsers](#supported-browsers)
-* [Markup]
-    * [HTML5]
-    * [General Markup Guidelines]
-* [Styles]
+* [Markup](#markup)
+    * [HTML5](#html5)
+    * [General Markup Guidelines](#general-markup-guidelines)
+* [Styles](#styles)
     * [Organization](#organization)
     * [Pattern Libary](#pattern-library)
     * [Themes](#themes)
@@ -83,7 +83,7 @@ These guidelines are not specific to WHS. Our product is not unique enough to wa
 
 http://foswiki.dev.webmd.com/bin/view.pl/Main/SupportedBrowsers
 
-We do not gaurantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features. 
+We do not gaurantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features.
 
 ## Markup
 
@@ -105,8 +105,7 @@ We use the HTML5 Doctype and will use HTML5 features when appropriate.
 
 #### Use HTML5 input[type=XXXX]
 
-
-
+???
 
 ### General Markup Guidelines
 
@@ -152,11 +151,11 @@ The HTML5 specification defines quotes around attributes values as optional. For
 
 ## Styles
 
-The second component of a web page is the presentation information contained in the Cascading Style Sheet (CSS.) Web browsers successful implementation of CSS has given web authors site-wide control over the look and feel of their web sites.
+The second component of a web page is the presentation information contained in the Cascading Style Sheet (CSS). Web browsers successful implementation of CSS has given web authors site-wide control over the look and feel of their web sites.
 
 Just as the information on a web page is semantically described in the HTML Markup, CSS describes all presentation aspects of the page via a description of its visual properties. CSS is powerful in that these properties are mixed and matched via identifiers to control the page's layout and visual characteristics through the layering of style rules (the "cascade").
 
-We use the [.LESS CSS preprocessor](www.dotlesscss.org) to allow us to theme our CSS.
+We use the [.LESS CSS preprocessor](http://dotlesscss.org) to allow us to theme our CSS.
 
 
     .LESS makes it easy to nest selectors that compile into long selectors
@@ -164,13 +163,20 @@ We use the [.LESS CSS preprocessor](www.dotlesscss.org) to allow us to theme our
         performance
         maintainability (selector wars!)
 
-        Rule of thumb 
+        Rule of thumb
             avoid creating selectors with more than 2 spaces in them
     Get to know CSS Selectors
-        * > 
-        * + 
-        * ~ 
-        * []
+        * > (direct child)
+        * + (adjacents sibling)
+        * ~ (general siblings)
+        * [] (attributes)
+        * [attr*=xxx]
+        * [attr^=xxx]
+        * [attr$=xxx]
+        * [data-*]
+        * [foo~=xxx]
+        * :checked, :before, :after, :not(), etc...
+        * Maybe Link to this...(http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/)
     Avoid !important
         It is a sign that we have a selector war and other selectors have too high of specificity
 
@@ -178,7 +184,7 @@ We use the [.LESS CSS preprocessor](www.dotlesscss.org) to allow us to theme our
     Embrace CSS3 to progressively enhance styles for newer browsers
     In 2012 we got rid of rounded corners for <IE9 throughout the site.
         We didn't hear any client complaints.
-    We aren't all CSS experts, reach out to one of our many knowledgable CSS devs before hacking together a solution in JavaScript.
+    We aren't all CSS experts, reach out to one of our many knowledgeable CSS devs before hacking together a solution in JavaScript.
 
 
 
@@ -189,7 +195,7 @@ We use the [.LESS CSS preprocessor](www.dotlesscss.org) to allow us to theme our
 
 ### Organization
 
-You should include exactly __one__ stylesheet on your page and no more. This base file should then import all dependancies and components. Components and styles for different sections should be contained in their own stylesheet and should not cross-pollinate. The home page styles directory, for example, contains the files `homepage.less` `layout.less` `featuredNews.less` `featuredVideo.less` `promoWeblets.less`
+You should include exactly __one__ stylesheet on your page and no more. This base file should then import all dependencies and components. Components and styles for different sections should be contained in their own stylesheet and should not cross-pollinate. The home page styles directory, for example, contains the files `homepage.less` `layout.less` `featuredNews.less` `featuredVideo.less` `promoWeblets.less`
 
 `homepage.less` is included on the page and imports the different files for each section like this:
 
@@ -482,7 +488,7 @@ __Make sure you're not redefining mixins that exist globally! Check components >
 
 ## Javascript
 
-JavaScript is a last resort. Do not use JavaScript to style the page. 
+JavaScript is a last resort. Do not use JavaScript to style the page.
 
 Do not rely on JavaScript to render the initial page contents. [Read about Twitter's dropping hash urls](https://blog.twitter.com/2012/improving-performance-twittercom)
 
@@ -766,7 +772,7 @@ Test files should be located at `\unittests\web\[ApplicationName]\`. The paths t
 
 ### jQuery usage
 
-Do not default to using jQuery for everything. It is a large library that includes much more functionality than is typically needed. 
+Do not default to using jQuery for everything. It is a large library that includes much more functionality than is typically needed.
 
 jQuery promotes some no-so-great practices. These should be avoided:
 * `$(document).ready(function(){...})` instead just put your scripts at the bottom of the markup and don't depend on CSS.
@@ -792,16 +798,16 @@ jQuery promotes some no-so-great practices. These should be avoided:
 
 Why modules?
 
-    
+
 > Now that we're delivering page content faster, the next step is to ensure that our JavaScript is loaded and the application is interactive as soon as possible. To do that, we need to minimize the amount of JavaScript we use: smaller payload over the wire, fewer lines of code to parse, faster to execute. To make sure we only download the JavaScript necessary for the page to work, we needed to get a firm grip on our dependencies.
 >
 > To do this, we opted to arrange all our code as CommonJS modules, delivered via AMD. This means that each piece of our code explicitly declares what it needs to execute which, firstly, is a win for developer productivity. When working on any one module, we can easily understand what dependencies it relies on, rather than the typical browser JavaScript situation in which code depends on an implicit load order and globally accessible properties.
-    
+
 Define all dependencies, do not access them from global scope within a module. This includes objects like `window` and `document` as well as other custom or third-party scripts. This improves performance as there is one less level to walk in the scope-chain in order to find an object definition. More importantly, it improves maintainability by documenting dependencies.
 
 #### Private Module
 
-If you don't need to export any functionality wrap it in an [Immediately-Invoked Function Expression](http://benalman.com/news/2010/11/immediately-invoked-function-expression/) to prevent variable name collisions and keep the global namespace clean. 
+If you don't need to export any functionality wrap it in an [Immediately-Invoked Function Expression](http://benalman.com/news/2010/11/immediately-invoked-function-expression/) to prevent variable name collisions and keep the global namespace clean.
 
 ```javascript
 (function (document) {
@@ -884,7 +890,7 @@ We do not have site-wide breakpoints for "mobile" or "tablet" or "desktop" - let
 
 ### A Lot of Media Queries?
 
-If you find yourself needing a lot of media queries in your layout's CSS, it might be a sign that your layout is too brittle. 
+If you find yourself needing a lot of media queries in your layout's CSS, it might be a sign that your layout is too brittle.
 
 
 ## Accessibility
@@ -896,7 +902,7 @@ Keyboard - some people are unable to use, or prefer not to use the mouse or trac
 Screenreader
 
 * Offscreen text is a last resort for accessibility. Ask yourself, are you giving the screenreader context that everyone should get?
-* 
+*
 *
 
 ### VPATs
@@ -909,7 +915,7 @@ This is the list of tests we need to verify to report that we are technically co
 ___this is not needed if the non-text element is just used for styling and has no semantic value___
 * (b) Equivalent alternatives for any multimedia presentation shall be synchronized with the presentation.
 * (c) Web pages shall be designed so that all information conveyed with color is also available without color, for example from context or markup.
-* (d) Documents shall be organized so they are readable without requiring an associated style sheet.    
+* (d) Documents shall be organized so they are readable without requiring an associated style sheet.
 ___We interpret this to just apply to documents that are not web pages___
 * (e) Redundant text links shall be provided for each active region of a server-side image map.
 ___Just avoid server-side image maps altogether___
@@ -1003,7 +1009,7 @@ Developer settings
     .LESS tools
     VS2012 text editor settings
 
-Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
+Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers.
 
 IE8 represents ~40% of our traffic today.
 
@@ -1033,7 +1039,7 @@ JavaScript
     Understand scoping and closures
     Understand browser dom api
     Use JS to manage state, not style
-        
+
     jsHint
         Shared WHS settings
     Modular
@@ -1050,7 +1056,7 @@ JavaScript
     Do not use jQuery for everything
         Our proliferation of dependencies on jQuery have prevented us from updating versions since
 
-    
+
 Progressive Enhancement
 
 
