@@ -772,14 +772,13 @@ Test files should be located at `\unittests\web\[ApplicationName]\`. The paths t
 
 Do not default to using jQuery for everything. It is a large library that includes much more functionality than is typically needed.
 
-jQuery promotes some no-so-great practices. These should be avoided:
+jQuery promotes some not-so-great practices. These should be avoided:
 * `$(document).ready(function(){...})` instead just put your scripts at the bottom of the markup and don't depend on CSS.
-* setting style with jQuery
-    These are just as bad as setting inline styles in HTML:
-    * `$('.item').hide('slow')` - this effectively sets an inline style of `display:none`
+* setting style with jQuery. These are just as bad as setting inline styles in HTML:
+    * `$('.item').hide('slow')` - this effectively sets an inline style of `display: none`
     * `$('.item').show('fast')`
     * `$('.item').toggle()`
-    * `$('.item').css({color: 'red'})` - this effectively sets an inline style of `color:red`
+    * `$('.item').css({color: 'red'})` - this effectively sets an inline style of `color: red`
 
     prefer
     * `$('.item').removeClass('is-visible')`
@@ -886,9 +885,11 @@ For browsers that support CSS media queries, our pages should render and look/wo
 
 We do not have site-wide breakpoints for "mobile" or "tablet" or "desktop" - let the content and layout on individual pages drive the layout decisions.
 
+?? user-agent sniffing is unreliable ??
+
 ### A Lot of Media Queries?
 
-If you find yourself needing a lot of media queries in your layout's CSS, it might be a sign that your layout is too brittle.
+If you find yourself needing a lot of media queries in your layout's CSS, it might be a sign that your layout is too brittle. Building your mobile layout and then scaling upwards may help alleviate issues.
 
 
 ## Accessibility
@@ -978,6 +979,7 @@ do not expect the site to look the same on different browsers
 question fidelity of designs
 don't code exactly to mockups. look for opportunities to leverage standard styles
 collaborate
+Design _mobile first_. It is more difficult to scale up than to scale down.
 
 ## Tools
 
@@ -986,6 +988,7 @@ collaborate
 * [WebPageTest](http://www.webpagetest.org)
 * [Fiddler2](http://fiddler2.com/) - web debugging proxy. Shape local HTTP traffic to more closely match site usage in production environment.
 * f12 (browser dev tools)
+* Sublime??? ;P hella fast CSS/JS editing, JSHint/LESS/Emmet. cool with the kids.
 
 ## References
 
@@ -1006,6 +1009,7 @@ Developer settings
     JsHint
     .LESS tools
     VS2012 text editor settings
+    Sublime text editor settings
 
 Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers.
 
