@@ -2,7 +2,7 @@
 
 ## Contents
 
-* [Overview](#overview) 
+* [Overview](#overview)
 * [Supported Browsers](#supported-browsers)
 * [HTML](#html)
     * [HTML5](#html5)
@@ -57,14 +57,14 @@
 * [Performance](#performance)
     * Create Markup on the Server
     * Limit Number of Requests
-    * Optimize inlude order
+    * Optimize include order
     * Embed CSS and JS when appropriate
     * Tools to test performance
-* [Principles]
+* [Principles](#principles)
     * Separation of Content, Style, and Behavior
     * Consistency
     * Prefer progressive enhancement to polyfilling
-* [Working With Design]
+* [Working With Design](#working-with-design)
 * [References](#references)
 
 ## Overview
@@ -75,14 +75,14 @@ This document's primary motivation is two-fold: 1) code consistency and 2) best 
 
 This document outlines the conventions we use at WHS. This is an open document and everything is up for discussion/consideration. We have a tremendous amount of legacy code that does not adhere to these rules, and if you find yourself in one of those files it is in everyone's best interest to refactor it.
 
-These guidelines are not specific to WHS. Our product is not unique enough to warrant deviations from industry standards. Much of this document has been adapted from other front end development guidelines. We're not developing on a seperate internet or for a unique browser, so we shouldn't need to invent new standards.
+These guidelines are not specific to WHS. Our product is not unique enough to warrant deviations from industry standards. Much of this document has been adapted from other front end development guidelines. We're not developing on a separate internet or for a unique browser, so we shouldn't need to invent new standards.
 
 
 ## Supported Browsers
 
 http://foswiki.dev.webmd.com/bin/view.pl/Main/SupportedBrowsers
 
-We do not gaurantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features. 
+We do not guarantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features.
 
 IE8 represents ~40% of our traffic today.
 
@@ -151,7 +151,7 @@ Interesting note - the jQuery library makes its `$().attr(name)` function case i
 
 #### Custom Attributes
 
-Custom attributes can help bind data and additional context to html elements for use by CSS or JavaScript. Go ahead and add them. 
+Custom attributes can help bind data and additional context to HTML elements for use by CSS or JavaScript. Go ahead and add them.
 
 Custom attribute names must start with `data-` and be all lowercase. Instead of camelCasing, smush all words together or seperate each word in the attribute name with a dash.
 
@@ -815,7 +815,7 @@ Test files should be located at `\unittests\web\[ApplicationName]\`. The paths t
             may depend on production markup created by executing controls
 
 
-#### Coming Soon: Command-line QUnit test runner 
+#### Coming Soon: Command-line QUnit Test Runner 
 
 You will soon be able to execute `> build myapp qunit` to create a qunit html file and execute your application's javascript tests from the command line and a CI build.
 
@@ -825,7 +825,7 @@ generates qunit.html file to run tests
 
 Prefer small decoupled modules to large monolithic applications.
 
-### jQuery usage
+### jQuery Usage
 
 Do not default to using jQuery for everything. It is a large library that includes much more functionality than is typically needed. 
 
@@ -978,7 +978,7 @@ We do not have site-wide breakpoints for "mobile" or "tablet" or "desktop" - let
 
 ### A Lot of Media Queries?
 
-If you find yourself needing a lot of media queries in your layout's CSS, it might be a sign that your layout is too brittle. 
+If you find yourself needing a lot of media queries in your CSS, it might be a sign that your layout is too brittle.
 
 
 ## Accessibility
@@ -1003,7 +1003,7 @@ This is the list of tests we need to verify to report that we are technically co
 ___this is not needed if the non-text element is just used for styling and has no semantic value___
 * (b) Equivalent alternatives for any multimedia presentation shall be synchronized with the presentation.
 * (c) Web pages shall be designed so that all information conveyed with color is also available without color, for example from context or markup.
-* (d) Documents shall be organized so they are readable without requiring an associated style sheet.    
+* (d) Documents shall be organized so they are readable without requiring an associated stylesheet.
 ___We interpret this to just apply to documents that are not web pages___
 * (e) Redundant text links shall be provided for each active region of a server-side image map.
 ___Just avoid server-side image maps altogether___
