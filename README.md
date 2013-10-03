@@ -6,6 +6,9 @@
 * [Supported Browsers](#supported-browsers)
 * [HTML](#html)
     * [HTML5](#html5)
+    * [Write Semantic Markup](#write-semantic-markup)
+    * [Tables](#tables)
+    * [Attributes](#attributes)
     * [General Markup Guidelines]
 * [CSS](#css)
     * [Organization](#organization)
@@ -94,45 +97,16 @@ Markup defines the structure and outline of a document. Markup is not intended t
 * Establishes Information Heirarchy
 * Adds semantic context to content
 
+We will test our markup against the [W3C validator](http://validator.w3.org/#validate_by_input), to ensure that the markup is well formed. 100% valid code is not a goal, but validation certainly helps to write more maintainable sites as well as debugging code. We do not guarantee code is 100% valid, but instead assures the cross-browser experience is fairly consistent.
+
 ### HTML5
 
 HTML5 is a new version of HTML and XHTML. The HTML5 draft specification defines a single language that can be written in HTML and XML. It attempts to solve issues found in previous iterations of HTML and addresses the needs of web applications, an area previously not adequately covered by HTML. (source).
 
 We use the HTML5 Doctype and will use HTML5 features when appropriate.
 
-We will test our markup against the [W3C validator](http://validator.w3.org/#validate_by_input), to ensure that the markup is well formed. 100% valid code is not a goal, but validation certainly helps to write more maintainable sites as well as debugging code. We do not guarantee code is 100% valid, but instead assures the cross-browser experience is fairly consistent.
-
-
 #### Use HTML5 input[type=XXXX]
 
-
-### Quoting Attributes
-
-The HTML5 specification defines quotes around attributes values as optional. For consistency with attributes that accept whitespace, all attributes values should be quoted.
-
-```html
-<p class="line note" data-attribute="106">This is my paragraph of special text.</p>
-```
-
-### Attribute Names Should Be All Lowercase
-
-Older browsers force all attribute names lowercase. For consistency, always specifiy attributes in lowercase. This is especially important when styling against attributes or retrieving them via javascript.
-
-Interesting note - the jQuery library makes its `$().attr(name)` function case insensitive to patch over this browser inconsistency. jQuery does not solve it for CSS though. If we just understand how browsers work and always specify our attributes in all lowercase then this bit of JavaScript is not needed and a simple, [VanillaJs](http://vanilla-js.com/),  `elem.getAttribute(name)` will always work.
-
-### Custom Attributes
-
-Custom attributes can help bind data and additional context to html elements for use by CSS or JavaScript. Go ahead and add them. 
-
-Custom attribute names must start with `data-` and be all lowercase. Instead of camelCasing, smush all words together or seperate each word in the attribute name with a dash.
-
-```html
-<div class="person"
-    data-is-minor="false"
-    data-gender="male">
-    <span class="name">George McFly</span>
-</div>
-```
 
 ### Write Semantic Markup
 
@@ -158,18 +132,38 @@ OR THIS?
 </p>
 ```
 
-### General Markup Guidelines
 
-The following are general guidelines for structuring your HTML markup. Authors are reminded to always use markup which represents the semantics of the content in the document being created.
+### Attributes
 
-* Use actual `p` elements for paragraph delimiters as opposed to multiple `br` tags.
-* Make use of `dl` (definition lists) and `blockquote`, when appropriate.
-* Items in list form should always be housed in a `ul`, `ol`, or `dl`, never a set of `div`s or `p`s.
-* Use label fields to label each form field, the `for` attribute should associate itself with the input field, so users can click the labels.
-* Use microformats and/or Microdata where appropriate, specifically hCard and adr.
-* ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property text-transform:uppercase/lowercase.
+#### Quoting Attributes
 
-#### Tables
+The HTML5 specification defines quotes around attributes values as optional. For consistency with attributes that accept whitespace, all attributes values should be quoted.
+
+```html
+<p class="line note" data-attribute="106">This is my paragraph of special text.</p>
+```
+
+#### Attribute Names Should Be All Lowercase
+
+Older browsers force all attribute names lowercase. For consistency, always specifiy attributes in lowercase. This is especially important when styling against attributes or retrieving them via javascript.
+
+Interesting note - the jQuery library makes its `$().attr(name)` function case insensitive to patch over this browser inconsistency. jQuery does not solve it for CSS though. If we just understand how browsers work and always specify our attributes in all lowercase then this bit of JavaScript is not needed and a simple, [VanillaJs](http://vanilla-js.com/),  `elem.getAttribute(name)` will always work.
+
+#### Custom Attributes
+
+Custom attributes can help bind data and additional context to html elements for use by CSS or JavaScript. Go ahead and add them. 
+
+Custom attribute names must start with `data-` and be all lowercase. Instead of camelCasing, smush all words together or seperate each word in the attribute name with a dash.
+
+```html
+<div class="person"
+    data-is-minor="false"
+    data-gender="male">
+    <span class="name">George McFly</span>
+</div>
+```
+
+### Tables
 
 Do use tables for tabular data. Do not use tables for layout.
 
@@ -194,6 +188,25 @@ Table markup with proper syntax (`thead`, `tbody`, `th [scope]`):
 </table>
 ```
 
+
+### Forms
+
+
+* Use label fields to label each form field, the `for` attribute should associate itself with the input field, so users can click the labels.
+
+### General Markup Guidelines
+
+The following are general guidelines for structuring your HTML markup. Authors are reminded to always use markup which represents the semantics of the content in the document being created.
+
+* Use actual `p` elements for paragraph delimiters as opposed to multiple `br` tags.
+
+* Make use of `dl` (definition lists) and `blockquote`, when appropriate.
+* Items in list form should always be housed in a `ul`, `ol`, or `dl`, never a set of `div`s or `p`s.
+
+* Use microformats and/or Microdata where appropriate, specifically hCard and adr.
+* ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property text-transform:uppercase/lowercase.
+
+
 ## CSS
 
 The second component of a web page is the presentation information contained in the Cascading Style Sheet (CSS.) Web browsers successful implementation of CSS has given web authors site-wide control over the look and feel of their web sites.
@@ -210,18 +223,7 @@ We use the [.LESS CSS preprocessor](http.dotlesscss.org) to allow us to theme ou
 
         Rule of thumb 
             avoid creating selectors with more than 2 spaces in them
-    Get to know CSS Selectors
-        * > (direct child)
-        * + (adjacents sibling)
-        * ~ (general siblings)
-        * [] (attributes)
-        * [attr*=xxx]
-        * [attr^=xxx]
-        * [attr$=xxx]
-        * [data-*]
-        * [foo~=xxx]
-        * :checked, :before, :after, :not(), etc...
-        * Maybe Link to this...(http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/)
+
     Avoid !important
         It is a sign that we have a selector war and other selectors have too high of specificity
 
@@ -284,6 +286,20 @@ Indent four spaces, no tabs
 
 #### Selectors
 
+Get to know CSS Selectors
+* > (direct child)
+* + (adjacents sibling)
+* ~ (general siblings)
+* [attr] (element has attribute defined)
+* [attr=xxx] (element has attribute with specified value)
+* [attr*=xxx]
+* [attr^=xxx]
+* [attr$=xxx]
+* [data-*]
+* [foo~=xxx]
+* :checked, :before, :after, :not(), etc...
+* Maybe Link to this...(http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/)
+
 Class and ID names should be `camelCase`
 
 ```css
@@ -291,7 +307,7 @@ Class and ID names should be `camelCase`
 #theIdName {...}
 ```
 
-State rules added via Javascript should us hyphens between words
+State rules added via Javascript should use hyphens between words
 
 ```css
 .is-visible {...}
