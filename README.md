@@ -627,7 +627,7 @@ piggyBank.addMoney(1);
 Use `===` and `!==` instead of `==` and `!=` to avoid type coercion.
 
 ```javascript
-var same = (a === b);
+var isSame = (a === b);
 ```
 
 #### Ternary Operator
@@ -813,13 +813,13 @@ Test files should be located at `\unittests\web\[ApplicationName]\`. The paths t
             Will be included in CI build
         Integration Tests
             may depend on production markup created by executing controls
-    build appTarget qunit
-        generates qunit.html file to run tests
 
 
 #### Coming Soon: Command-line QUnit test runner 
 
 You will soon be able to execute `> build myapp qunit` to create a qunit html file and execute your application's javascript tests from the command line and a CI build.
+
+generates qunit.html file to run tests
 
 ### JavaScript Architecture
 
@@ -1080,7 +1080,7 @@ Design _mobile first_. It is more difficult to scale up than to scale down.
 * [WebPageTest](http://www.webpagetest.org)
 * [Fiddler2](http://fiddler2.com/) - web debugging proxy. Shape local HTTP traffic to more closely match site usage in production environment.
 * f12 (browser dev tools)
-* Sublime??? ;P hella fast CSS/JS editing, JSHint/LESS/Emmet. cool with the kids.
+* Sublime - ;P hella fast CSS/JS editing, JSHint/LESS/Emmet. cool with the kids.
 
 
 
@@ -1104,8 +1104,6 @@ https://github.com/bitmap/less-style
 https://github.com/objectfoo/js-style/blob/master/guide.md
 
 ## TODO
-
-CSS Specificity Wars (http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html)
 
 General
     Consistency
