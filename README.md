@@ -90,7 +90,7 @@ We do not gaurantee that all functionality will work the same between browsers. 
 
 The first component of any web page is the tag-based markup language of HTML. The Hyper Text Markup Language (HTML) has a sordid history but has come into its own in the last few years. After a lengthy experimentation with the XML-based XHTML variant the industry has accepted that HTML is the future of the web.
 
-Markup defines the structure and outline of a document and offers a structured content. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style sheets.
+Markup defines the structure and outline of a document. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style sheets.
 
 * Defines content
 * Establishes Information Heirarchy
@@ -102,12 +102,16 @@ HTML5 is a new version of HTML and XHTML. The HTML5 draft specification defines 
 
 We use the HTML5 Doctype and will use HTML5 features when appropriate.
 
-?? We will test our markup against the W3C validator, to ensure that the markup is well formed. 100% valid code is not a goal, but validation certainly helps to write more maintainable sites as well as debugging code. We do not guarantee code is 100% valid, but instead assures the cross-browser experience is fairly consistent. ??
+We will test our markup against the [W3C validator](http://validator.w3.org/#validate_by_input), to ensure that the markup is well formed. 100% valid code is not a goal, but validation certainly helps to write more maintainable sites as well as debugging code. We do not guarantee code is 100% valid, but instead assures the cross-browser experience is fairly consistent.
+
 
 #### Use HTML5 input[type=XXXX]
 
+#### Attribute Names Should Be All Lowercase
 
+Older browsers force all attribute names lowercase. For consistency, always specifiy attributes in lowercase. This is especially important when styling against attributes or retrieving them via javascript.
 
+Interesting note - the jQuery library makes its `$().attr(name)` function case insensitive to patch over this browser inconsistency. jQuery does not solve it for CSS though. If we just understand how browsers work and always specify our attributes in all lowercase then this bit of JavaScript is not needed and a simple, [VanillaJs](http://vanilla-js.com/),  `elem.getAttribute(name)` will always work.
 
 ### General Markup Guidelines
 
@@ -120,7 +124,7 @@ The following are general guidelines for structuring your HTML markup. Authors a
 * Never use tables for layout.
 * Use microformats and/or Microdata where appropriate, specifically hCard and adr.
 * Make use of `thead`, `tbody`, and `th` tags (and Scope attribute) when appropriate.
-* Table markup with proper syntax (`thead`, `tbody`, `th [scope]`)
+    Table markup with proper syntax (`thead`, `tbody`, `th [scope]`)
 
     ```html
     <table>
@@ -157,7 +161,7 @@ The second component of a web page is the presentation information contained in 
 
 Just as the information on a web page is semantically described in the HTML Markup, CSS describes all presentation aspects of the page via a description of its visual properties. CSS is powerful in that these properties are mixed and matched via identifiers to control the page's layout and visual characteristics through the layering of style rules (the "cascade").
 
-We use the [.LESS CSS preprocessor](www.dotlesscss.org) to allow us to theme our CSS.
+We use the [.LESS CSS preprocessor](http.dotlesscss.org) to allow us to theme our CSS.
 
 
     .LESS makes it easy to nest selectors that compile into long selectors
@@ -456,7 +460,11 @@ div {
 
 __Make sure you're not redefining mixins that exist globally! Check components > common.less__
 
+### Limit Selector Specificity
 
+Avoid creating overly-specific CSS selectors.
+
+[CSS Specificity Wars](http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html)
 
 ### Stay Rad
 
@@ -1848,6 +1856,8 @@ jQuery promotes some not-so-great practices. These should be avoided:
     * `$('.item').addClass('is-error')`
     And ___move styling and animation decisions to CSS, where they belong___.
 
+    [Updating styles via class name rather than setting styles from script is also faster](http://jsperf.com/change-class-vs-inline-styling/5)
+
 ### Delegated Event Handlers
 
 
@@ -2063,8 +2073,6 @@ https://github.com/bitmap/less-style
 https://github.com/objectfoo/js-style/blob/master/guide.md
 
 ## TODO
-
-CSS Specificity Wars (http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html)
 
 Developer settings
     JsHint
