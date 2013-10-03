@@ -799,7 +799,7 @@ Always use [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 ___Automated testing is not optional___. You will have to change the way you write JavaScript to make it testable.
 
-JavaScript should be created using Test Driven Development. We use QUnit as our testing framework. We have had a few iterations of unit test patterns. You will see these in the codebase. Model your new tests off of the Health Concierge project.
+JavaScript should be created using Test Driven Development. We use [QUnit](http://qunitjs.com/) as our testing framework. We have had a few iterations of unit test patterns. You will see these in the codebase. Model your new tests off of the Health Concierge project.
 
 Test files should be located at `\unittests\web\[ApplicationName]\`. The paths to individual files within here should match the locations of the production files under `\production\web\[ApplicaitonName]\`.
 
@@ -1075,7 +1075,7 @@ Design _mobile first_. It is more difficult to scale up than to scale down.
 
 ## Tools
 
-* Web Essentials Visual Studio Plugin - provides enhanced .LESS and JavaScript code editor support
+* [Web Essentials](http://visualstudiogallery.msdn.microsoft.com/07d54d12-7133-4e15-becb-6f451ea3bea6) Visual Studio Plugin - provides enhanced .LESS and JavaScript code editor support
 * [DOM Monster](http://mir.aculo.us/dom-monster/) - analyze markup quality
 * [WebPageTest](http://www.webpagetest.org)
 * [Fiddler2](http://fiddler2.com/) - web debugging proxy. Shape local HTTP traffic to more closely match site usage in production environment.
