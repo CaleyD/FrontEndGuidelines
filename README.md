@@ -45,7 +45,6 @@
         * [Making a module testable](#making-a-module-testable)
         * AMD
     * [Declaring Variables](#declaring-variables)
-    * Animate and Style with CSS, not JavaScript
     * Manage State, Not Style
     * Use delegated events
     * Third-party libraries and plugins
@@ -833,7 +832,7 @@ jQuery promotes some no-so-great practices. These should be avoided:
 
 * `$(document).ready(function(){...})` instead just put your scripts at the bottom of the markup and don't depend on CSS.
 
-### Manage State Not Style
+### Manage State, Not Style
 
 Setting styles with JavaScript is a no-no.
 
@@ -1022,11 +1021,11 @@ ___Just avoid applets and plugins (no more Flash)___
 * (p) When a timed response is required, the user shall be alerted and given sufficient time to indicate more time is required.
 
 
-
-
 ## Performance
 
+Web pages should render in under 2 seconds on average. Review real user monitoring data recorded in the production environment to verify performance.
 
+Steve Souders has some great [tech talks on web performance](http://stevesouders.com/videos.php).
 
 ### Optimize Images
 
