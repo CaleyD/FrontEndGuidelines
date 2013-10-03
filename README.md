@@ -41,11 +41,10 @@
         * [Module with Public API](#module-with-public-api)
         * [Making a module testable](#making-a-module-testable)
         * AMD
-    * [Best Practices](#best-practices)
-        * Animate and Style with CSS, not JavaScript
-        * [Declaring Variables](#declaring-variables)
-        * Manage State, Not Style
-        * Use delegated events
+    * [Declaring Variables](#declaring-variables)
+    * Animate and Style with CSS, not JavaScript
+    * Manage State, Not Style
+    * Use delegated events
     * Third-party libraries and plugins
 * [Responsive Design](#responsive-design)
 * [Accessibility](#accessibility)
@@ -55,9 +54,6 @@
 * [Performance](#performance)
     * Create Markup on the Server
     * Limit Number of Requests
-        * Combine CSS
-        * Comine JS
-        * Combine Images
     * Optimize inlude order
     * Embed CSS and JS when appropriate
     * Tools to test performance
@@ -84,6 +80,9 @@ These guidelines are not specific to WHS. Our product is not unique enough to wa
 http://foswiki.dev.webmd.com/bin/view.pl/Main/SupportedBrowsers
 
 We do not gaurantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features. 
+
+IE8 represents ~40% of our traffic today.
+
 
 ## HTML
 
@@ -130,7 +129,7 @@ Custom attribute names must start with `data-` and be all lowercase. Instead of 
 ```html
 <div class="person"
     data-is-minor="false"
-	data-gender="male">
+    data-gender="male">
     <span class="name">George McFly</span>
 </div>
 ```
@@ -180,18 +179,18 @@ Table markup with proper syntax (`thead`, `tbody`, `th [scope]`):
 
 ```html
 <table>
-	<thead>
-		<tr>
-			<th scope="col">Table header 1</th>
-			<th scope="col">Table header 2</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Table data 1</td>
-			<td>Table data 2</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th scope="col">Table header 1</th>
+            <th scope="col">Table header 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Table data 1</td>
+            <td>Table data 2</td>
+        </tr>
+    </tbody>
 </table>
 ```
 
@@ -523,7 +522,7 @@ Avoid creating overly-specific CSS selectors.
 * If you're doing something dumb, document why with a `//` comment
 
 
-# Javascript
+## Javascript
 
 JavaScript is a last resort. Do not use JavaScript to style the page. 
 
@@ -714,10 +713,38 @@ Always put a blank line
 })();
 ```
 
+### Declaring variables
+
+Declare variables at the beginning of their scope in a single statement. Declaring variables in a single statement performs faster than spreading them around, minifies better, makes them easier to find, and reduces [hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting) errors.
+
+```javascript
+(function (){
+    'use strict';
+    // declare module wide variables at the beginning of module scope in a single statement
+    var moduleA = 4,
+        moduleB = 5;
+
+    function aFunc (msg) {
+        // declare local variables at the beginning of function scope
+        var standardGreeting = 'Hello';
+
+        if (!!msg) {
+            return standardGreeting + ' A: ' + moduleA;
+        } else {
+            return msg + 'B: ' + moduleB;
+        }
+    }
+
+    alert(aFunc()); // Hello A: 4
+    alert(aFunc('ohai!')); // ohai! B: 5
+})();
+```
+
+
 ### JsHint
 
 We use jsHint to enforce a consistent coding style and to help prevent JavaScript errors.
-http://blog.stevensanderson.com/2012/08/17/using-jshint-inside-visual-studio-the-basics/
+There are jsHint plugins for Visual Studio (http://blog.stevensanderson.com/2012/08/17/using-jshint-inside-visual-studio-the-basics/) and Sublime.
 
 make sure your code passes [JsHint](http://jshint.com/). If you must include code that doesn't pass the JsHint check add a [directive](http://jshint.com/docs/#directives) to make it pass.
 
@@ -752,85 +779,66 @@ Always use [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 ```
 
 
-### Declaring variables
-
-Declare variables at the beginning of their scope in a single statement. Declaring variables in a single statement performs faster than spreading them around, minifies better, makes them easier to find, and reduces [hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting) errors.
-
-```javascript
-(function (){
-    'use strict';
-    // declare module wide variables at the beginning of module scope in a single statement
-    var moduleA = 4,
-        moduleB = 5;
-
-    function aFunc (msg) {
-        // declare local variables at the beginning of function scope
-        var standardGreeting = 'Hello';
-
-        if (!!msg) {
-            return standardGreeting + ' A: ' + moduleA;
-        } else {
-            return msg + 'B: ' + moduleB;
-        }
-    }
-
-    alert(aFunc()); // Hello A: 4
-    alert(aFunc('ohai!')); // ohai! B: 5
-})();
-```
-
-
 ### Unit Tests
 
-Automated testing is not optional. You will have to change the way you write JavaScript to make it testable.
-
-        QUnit
-            Some semantics:
-            Unit Tests
-                self contained
-                targetted
-                any markup to test against is embedded in test js file
-                not dependent on CSS files
-                Will be included in CI build
-            Integration Tests
-                may depend on production markup created by executing controls
-        build appTarget qunit
-            generates qunit.html file to run tests
+___Automated testing is not optional___. You will have to change the way you write JavaScript to make it testable.
 
 JavaScript should be created using Test Driven Development. We use QUnit as our testing framework. We have had a few iterations of unit test patterns. You will see these in the codebase. Model your new tests off of the Health Concierge project.
 
 Test files should be located at `\unittests\web\[ApplicationName]\`. The paths to individual files within here should match the locations of the production files under `\production\web\[ApplicaitonName]\`.
 
-#### Command-line QUnit test runner coming soon
-    You will soon be able to execute `> build myapp qunit` to create a qunit html file and execute your application's javascript tests from the command line and a CI build.
+    QUnit
+    Some semantics:
+        Unit Tests
+            self contained
+            targetted
+            any markup to test against is embedded in test js file
+            not dependent on CSS files
+            Will be included in CI build
+        Integration Tests
+            may depend on production markup created by executing controls
+    build appTarget qunit
+        generates qunit.html file to run tests
+
+
+#### Coming Soon: Command-line QUnit test runner 
+
+You will soon be able to execute `> build myapp qunit` to create a qunit html file and execute your application's javascript tests from the command line and a CI build.
 
 ### JavaScript Architecture
 
+Prefer small decoupled modules to large monolithic applications.
 
 ### jQuery usage
 
 Do not default to using jQuery for everything. It is a large library that includes much more functionality than is typically needed. 
 
 jQuery promotes some no-so-great practices. These should be avoided:
+
 * `$(document).ready(function(){...})` instead just put your scripts at the bottom of the markup and don't depend on CSS.
-* setting style with jQuery
-    These are just as bad as setting inline styles in HTML:
-    * `$('.item').hide('slow')` - this effectively sets an inline style of `display:none`
-    * `$('.item').show('fast')`
-    * `$('.item').toggle()`
-    * `$('.item').css({color: 'red'})` - this effectively sets an inline style of `color:red`
 
-    prefer
-    * `$('.item').removeClass('is-visible')`
-    * `$('.item').addClass('is-visible')`
-    * `$('.item').toggleClass('is-visible')`
-    * `$('.item').addClass('is-error')`
-    And ___move styling and animation decisions to CSS, where they belong___.
+### Manage State Not Style
 
-    [Updating styles via class name rather than setting styles from script is also faster](http://jsperf.com/change-class-vs-inline-styling/5)
+Setting styles with JavaScript is a no-no.
 
+These are just as bad as setting inline styles in HTML:
+* `$('.item').hide('slow')`
+* `$('.item').show('fast')`
+* `$('.item').toggle()`
+* `$('.item').css({color: 'red'})`
+
+Prefer these:
+* `$('.item').removeClass('is-visible')`
+* `$('.item').addClass('is-visible')`
+* `$('.item').toggleClass('is-visible')`
+* `$('.item').addClass('is-error')`
+
+And ___move styling and animation decisions to CSS, where they belong___.
+
+[Updating styles via class name rather than setting styles from script is also faster](http://jsperf.com/change-class-vs-inline-styling/5)
 
 ### Delegated Event Handlers
+
 
 
 ### Write Modular Code
@@ -918,6 +926,31 @@ var myModule = (function (myModule) {
 })(myModule || {});
 ```
 
+#### TODO
+
+JavaScript
+
+    For new pages, include script references at the bottom of the markup
+        improves performance - *performance link*
+        simplifies code - no longer need $(document).ready event in most cases
+    Understand scoping and closures
+    Understand browser dom api
+    Use JS to manage state, not style
+        
+    Modular
+        AMD
+        Prefer small, decoupled, independent, and cohesive modules of functionality over connected architecture
+    Do not pollute the global namespace
+        Global objects are bad, avoid them.
+    Prefer scripts that do not expose any global api
+        When that isn't possible, create as small of an API as possible
+        Changing an existing JavaScript API is expensive
+        JS maintainance is hard, we don't have a compiler to enforce correctness like C#
+    
+    Do not reach for a third-party library as a first solution
+    Do not use jQuery for everything
+        Our proliferation of dependencies on jQuery have prevented us from updating versions since
+
 
 ## Responsive Design
 
@@ -995,7 +1028,7 @@ Use [tinypng](tinypng.com) or similar tool to compress `png` files and speed up 
 
 ### Maximize Cachability
 
-Referenced CSS, JavaScript and image files will automatically contain caching headers.
+Referenced CSS, JavaScript and image files will automatically contain caching headers. This is configured in IIS.
 
 Can your AJAX request be cached client-side (with HTTP caching)? If so, add the proper HTTP headers server-side.
 
@@ -1034,9 +1067,18 @@ Design _mobile first_. It is more difficult to scale up than to scale down.
 * Sublime??? ;P hella fast CSS/JS editing, JSHint/LESS/Emmet. cool with the kids.
 
 
+
+Consistent Developer Tool Settings
+    JsHint
+    .LESS tools
+    VS2012 text editor settings
+    Sublime text editor settings
+
 ## References
 
-This guide borrows heavily from around the net and [Nicholas Zakas](https://www.twitter.com/slicknet)' book [Maintainable Javascript](http://www.amazon.com/Maintainable-JavaScript-ebook/dp/B0082CXEB0).
+This guide borrows heavily from around the net
+
+[Nicholas Zakas](https://www.twitter.com/slicknet)' book [Maintainable Javascript](http://www.amazon.com/Maintainable-JavaScript-ebook/dp/B0082CXEB0).
 
 http://taitems.github.io/Front-End-Development-Guidelines/
 http://isobar-idev.github.io/code-standards/
@@ -1049,18 +1091,7 @@ https://github.com/objectfoo/js-style/blob/master/guide.md
 
 CSS Specificity Wars (http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html)
 
-Developer settings
-    JsHint
-    .LESS tools
-    VS2012 text editor settings
-    Sublime text editor settings
-
-Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
-
-IE8 represents ~40% of our traffic today.
-
 General
-    Pattern Library
     Consistency
     Hacks will break, prefer progressive enhancement
     Browsers are different, adopt a development stratagy to embrace this and not try to patch over it
@@ -1071,35 +1102,9 @@ Use the right technology for the job
 HTML
     Avoid adding tags just to style
 
-JavaScript
-    Javascript should be a last resort.
-    Style Guide
-
-    For new pages, include script references at the bottom of the markup
-        improves performance - *performance link*
-        simplifies code - no longer need $(document).ready event in most cases
-    Understand scoping and closures
-    Understand browser dom api
-    Use JS to manage state, not style
-        
-    jsHint
-        Shared WHS settings
-    Modular
-        AMD
-        Prefer small, decoupled, independent, and cohesive modules of functionality over connected architecture
-    Do not pollute the global namespace
-        Global objects are bad, avoid them.
-    Prefer scripts that do not expose any global api
-        When that isn't possible, create as small of an API as possible
-        Changing an existing JavaScript API is expensive
-        *JS maintainance is hard, we don't have a compiler to enforce correctness like C#
-    Prefer small decoupled modules to large monolithic applications
-    Do not reach for a third-party library as a first solution
-    Do not use jQuery for everything
-        Our proliferation of dependencies on jQuery have prevented us from updating versions since
-
-    
 Progressive Enhancement
+
+    Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
 
 
 
