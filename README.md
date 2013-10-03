@@ -539,9 +539,15 @@ Avoid creating overly-specific CSS selectors.
 
 ## Javascript
 
+
+JavaScript is the third major component of a web page. JavaScript code, when properly applied to a web page, enhances the overall user and browser-based experience through attaching to events and controlling the overall behavior layer.
+
+JavaScript has seen an explosion in popularity in recent years as powerful new browser implementations have finally empowered the creation of full on browser-based web applications. Additionally, careful use of JavaScript allows for full manipulation and control over the other two components of web page authoring, HTML Markup and CSS. Today the structure of pages and the visual styles of pages can be manipulated real time without full web page refreshes.
+
+
 JavaScript is a last resort. Do not use JavaScript to style the page. 
 
-http://www.youtube.com/watch?v=li4Y0E_x8zE
+[Video: Enough with the JavaScript Already](http://www.youtube.com/watch?v=li4Y0E_x8zE)
 
 Do not rely on JavaScript to render the initial page contents. [Read about Twitter's dropping hash urls](https://blog.twitter.com/2012/improving-performance-twittercom)
 
@@ -549,11 +555,11 @@ Do not rely on JavaScript to render the initial page contents. [Read about Twitt
 
 #### Indentation
 
-Indent a tab, do not mix spaces and tabs.
+Indent with tabs, do not mix spaces and tabs.
 
 #### Statement Termination
 
-Always include semi-colons, don't rely on Javscript's [automatic semi-colon insertion](http://bclary.com/2004/11/07/#a-7.9.1) rules.
+Always include semi-colons, don't rely on JavaScript's [automatic semi-colon insertion](http://bclary.com/2004/11/07/#a-7.9.1) rules.
 
 #### Line Length
 
@@ -607,7 +613,7 @@ if (1 && !0) {
 
 #### Naming
 
-Use camel case for variables and regular functions, pascal case for constructors and all caps to indicate a constant. Variables and constructors should begin with a noun and regular functions should begin with a verb.
+Use camelCase for variables and regular functions, PascalCase for constructors and ALL_CAPS to indicate a constant. Variables and constructors should begin with a noun and regular functions should begin with a verb.
 
 ```javascript
 function MoneyMaker(amount) {
@@ -1083,8 +1089,6 @@ Design _mobile first_. It is more difficult to scale up than to scale down.
 * f12 (browser dev tools)
 * Sublime - ;P hella fast CSS/JS editing, JSHint/LESS/Emmet. cool with the kids.
 
-
-
 Consistent Developer Tool Settings
     JsHint
     .LESS tools
@@ -1106,11 +1110,6 @@ https://github.com/objectfoo/js-style/blob/master/guide.md
 
 ## TODO
 
-General
-    Consistency
-    Hacks will break, prefer progressive enhancement
-    Browsers are different, adopt a development stratagy to embrace this and not try to patch over it
-
 Use the right technology for the job
     Animations belong in CSS
         Transitions and animations
@@ -1120,6 +1119,10 @@ HTML
 ## Progressive Enhancement
 
     Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
+    
+    Hacks will break, prefer progressive enhancement
+    
+    Browsers are different, adopt a development stratagy to embrace this and not try to patch over it
     
     [Progressive enhancement is still important](http://jakearchibald.com/2013/progressive-enhancement-still-important/)
 
