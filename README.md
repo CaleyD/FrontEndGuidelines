@@ -5,10 +5,10 @@
 
 * [Overview](#overview) 
 * [Supported Browsers](#supported-browsers)
-* [Markup]
+* [HTML]
     * [HTML5]
     * [General Markup Guidelines]
-* [Styles]
+* [CSS]
     * [Organization](#organization)
     * [Pattern Libary](#pattern-library)
     * [Themes](#themes)
@@ -86,7 +86,7 @@ http://foswiki.dev.webmd.com/bin/view.pl/Main/SupportedBrowsers
 
 We do not gaurantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features. 
 
-## Markup
+## HTML
 
 The first component of any web page is the tag-based markup language of HTML. The Hyper Text Markup Language (HTML) has a sordid history but has come into its own in the last few years. After a lengthy experimentation with the XML-based XHTML variant the industry has accepted that HTML is the future of the web.
 
@@ -107,11 +107,35 @@ We will test our markup against the [W3C validator](http://validator.w3.org/#val
 
 #### Use HTML5 input[type=XXXX]
 
-#### Attribute Names Should Be All Lowercase
+### Attribute Names Should Be All Lowercase
 
 Older browsers force all attribute names lowercase. For consistency, always specifiy attributes in lowercase. This is especially important when styling against attributes or retrieving them via javascript.
 
 Interesting note - the jQuery library makes its `$().attr(name)` function case insensitive to patch over this browser inconsistency. jQuery does not solve it for CSS though. If we just understand how browsers work and always specify our attributes in all lowercase then this bit of JavaScript is not needed and a simple, [VanillaJs](http://vanilla-js.com/),  `elem.getAttribute(name)` will always work.
+
+### Write Semantic Markup
+
+Writing websites with clean, semantic HTML is something we wish we could always do. Sometimes we find ourselves limited by the way pages were setup by our predecessors, or sometimes we're coding an HTML email. The validity of the HTML should never be compromised, even if to solve a browser specific bug.
+
+Headings should be heirarchically created from <h2> onwards, paragraphs should always be in <p> tags and so on and so forth. If you write semantic HTML, the resultant page will be cleaner, lighter and more easily styled.
+
+WHICH DO YOU THINK LOOKS CLEANER, THIS?:
+
+```html
+<span class="sectionHeading">A Heading</span>
+<br /> <br />
+Lorem ipsum dolor sit amet. ...
+<br /> <br />
+```
+
+OR THIS?
+
+```html
+<h2>A Heading</h2>
+<p>
+    Lorem ipsum dolor sit amet. ...
+</p>
+```
 
 ### General Markup Guidelines
 
@@ -121,28 +145,33 @@ The following are general guidelines for structuring your HTML markup. Authors a
 * Make use of `dl` (definition lists) and `blockquote`, when appropriate.
 * Items in list form should always be housed in a `ul`, `ol`, or `dl`, never a set of `div`s or `p`s.
 * Use label fields to label each form field, the `for` attribute should associate itself with the input field, so users can click the labels.
-* Never use tables for layout.
 * Use microformats and/or Microdata where appropriate, specifically hCard and adr.
-* Make use of `thead`, `tbody`, and `th` tags (and Scope attribute) when appropriate.
-    Table markup with proper syntax (`thead`, `tbody`, `th [scope]`)
-
-    ```html
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">Table header 1</th>
-                <th scope="col">Table header 2</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Table data 1</td>
-                <td>Table data 2</td>
-            </tr>
-        </tbody>
-    </table>
-    ```
 * ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property text-transform:uppercase/lowercase.
+
+#### Tables
+
+Do use tables for tabular data. Do not use tables for layout.
+
+Make use of `thead`, `tbody`, and `th` tags (and Scope attribute) when appropriate.
+
+Table markup with proper syntax (`thead`, `tbody`, `th [scope]`):
+
+```html
+<table>
+	<thead>
+		<tr>
+			<th scope="col">Table header 1</th>
+			<th scope="col">Table header 2</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Table data 1</td>
+			<td>Table data 2</td>
+		</tr>
+	</tbody>
+</table>
+```
 
 #### Quoting Attributes
 
@@ -155,7 +184,7 @@ The HTML5 specification defines quotes around attributes values as optional. For
 
 
 
-## Styles
+## CSS
 
 The second component of a web page is the presentation information contained in the Cascading Style Sheet (CSS.) Web browsers successful implementation of CSS has given web authors site-wide control over the look and feel of their web sites.
 
