@@ -541,6 +541,8 @@ Avoid creating overly-specific CSS selectors.
 
 JavaScript is a last resort. Do not use JavaScript to style the page. 
 
+http://www.youtube.com/watch?v=li4Y0E_x8zE
+
 Do not rely on JavaScript to render the initial page contents. [Read about Twitter's dropping hash urls](https://blog.twitter.com/2012/improving-performance-twittercom)
 
 ### Formatting (#javascript-formatting)
@@ -1115,9 +1117,11 @@ Use the right technology for the job
 HTML
     Avoid adding tags just to style
 
-Progressive Enhancement
+## Progressive Enhancement
 
     Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
+    
+    [Progressive enhancement is still important](http://jakearchibald.com/2013/progressive-enhancement-still-important/)
 
 
 
