@@ -1,14 +1,13 @@
-<<<<<<< HEAD
 # Front End Coding Guidelines
 
 ## Contents
 
 * [Overview](#overview) 
 * [Supported Browsers](#supported-browsers)
-* [HTML]
-    * [HTML5]
+* [HTML](#html)
+    * [HTML5](#html5)
     * [General Markup Guidelines]
-* [CSS]
+* [CSS](#css)
     * [Organization](#organization)
     * [Pattern Libary](#pattern-library)
     * [Themes](#themes)
@@ -23,7 +22,7 @@
         * progressive enhancement
     * [Animations]
     * [Stay Rad](#stay-rad)
-* [JavaScript]
+* [JavaScript](#javascript)
     * [Unit testing](#unit-testing)
     * [Code Quality](#code-quality)
     * [Formatting](#javascript-formatting)
@@ -49,11 +48,11 @@
         * Use delegated events
     * Third-party libraries and plugins
 * [Responsive Design](#responsive-design)
-* [Accessibility]
+* [Accessibility](#accessibility)
     * Standards Compliance
     * Simple Markup
     * WAI-ARIA
-* [Performance]
+* [Performance](#performance)
     * Create Markup on the Server
     * Limit Number of Requests
         * Combine CSS
@@ -67,7 +66,7 @@
     * Consistency
     * Prefer progressive enhancement to polyfilling
 * [Working With Design]
-* [References]
+* [References](#references)
 
 ## Overview
 
@@ -107,17 +106,40 @@ We will test our markup against the [W3C validator](http://validator.w3.org/#val
 
 #### Use HTML5 input[type=XXXX]
 
+
+### Quoting Attributes
+
+The HTML5 specification defines quotes around attributes values as optional. For consistency with attributes that accept whitespace, all attributes values should be quoted.
+
+```html
+<p class="line note" data-attribute="106">This is my paragraph of special text.</p>
+```
+
 ### Attribute Names Should Be All Lowercase
 
 Older browsers force all attribute names lowercase. For consistency, always specifiy attributes in lowercase. This is especially important when styling against attributes or retrieving them via javascript.
 
 Interesting note - the jQuery library makes its `$().attr(name)` function case insensitive to patch over this browser inconsistency. jQuery does not solve it for CSS though. If we just understand how browsers work and always specify our attributes in all lowercase then this bit of JavaScript is not needed and a simple, [VanillaJs](http://vanilla-js.com/),  `elem.getAttribute(name)` will always work.
 
+### Custom Attributes
+
+Custom attributes can help bind data and additional context to html elements for use by CSS or JavaScript. Go ahead and add them. 
+
+Custom attribute names must start with `data-` and be all lowercase. Instead of camelCasing, smush all words together or seperate each word in the attribute name with a dash.
+
+```html
+<div class="person"
+    data-is-minor="false"
+	data-gender="male">
+    <span class="name">George McFly</span>
+</div>
+```
+
 ### Write Semantic Markup
 
 Writing websites with clean, semantic HTML is something we wish we could always do. Sometimes we find ourselves limited by the way pages were setup by our predecessors, or sometimes we're coding an HTML email. The validity of the HTML should never be compromised, even if to solve a browser specific bug.
 
-Headings should be heirarchically created from <h2> onwards, paragraphs should always be in <p> tags and so on and so forth. If you write semantic HTML, the resultant page will be cleaner, lighter and more easily styled.
+Headings should be heirarchically created from `<h2>` onwards, paragraphs should always be in `<p>` tags and so on and so forth. If you write semantic HTML, the resultant page will be cleaner, lighter and more easily styled.
 
 WHICH DO YOU THINK LOOKS CLEANER, THIS?:
 
@@ -172,17 +194,6 @@ Table markup with proper syntax (`thead`, `tbody`, `th [scope]`):
 	</tbody>
 </table>
 ```
-
-#### Quoting Attributes
-
-The HTML5 specification defines quotes around attributes values as optional. For consistency with attributes that accept whitespace, all attributes values should be quoted.
-
-```html
-<p class="line note" data-attribute="106">This is my paragraph of special text.</p>
-```
-
-
-
 
 ## CSS
 
@@ -511,14 +522,7 @@ Avoid creating overly-specific CSS selectors.
 * If you're doing something dumb, document why with a `//` comment
 
 
-
-
-
-
-
-
-
-## Javascript
+# Javascript
 
 JavaScript is a last resort. Do not use JavaScript to style the page. 
 
