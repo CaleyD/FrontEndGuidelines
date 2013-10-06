@@ -563,7 +563,7 @@ Always include semi-colons, don't rely on JavaScript's [automatic semi-colon ins
 
 #### Line Length
 
-Limit line length to 80 characters, for lines greater than 80 characters break after an operator and double indent the next line unless doing an assignment.
+Limit line length to 120 characters, for lines greater than 120 characters break after an operator and double indent the next line unless doing an assignment.
 
 ```javascript
 // double indent wrapped lines
