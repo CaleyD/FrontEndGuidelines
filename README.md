@@ -1108,6 +1108,8 @@ http://www.mediawiki.org/wiki/Front-End_Coding_Standards
 https://github.com/bitmap/less-style
 https://github.com/objectfoo/js-style/blob/master/guide.md
 
+http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml
+
 ## TODO
 
 Use the right technology for the job
