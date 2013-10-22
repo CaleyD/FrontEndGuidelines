@@ -149,14 +149,14 @@ document being created.
     <table>
         <thead>
             <tr>
-		<th>Table header 0</th>
+                <th>Table header 0</th>
                 <th>Table header 1</th>
                 <th>Table header 2</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-		<th scope="row">Row header</th>
+                <th scope="row">Row header</th>
                 <td>Table data 1</td>
                 <td>Table data 2</td>
             </tr>
