@@ -4,8 +4,8 @@
 
 * [Overview](#overview) 
 * [Supported Browsers](#supported-browsers)
-* [Markup]
-    * [HTML5]
+* [Markup](#markup)
+    * [HTML5](#html5)
     * [General Markup Guidelines]
 * [Styles]
     * [Organization](#organization)
@@ -39,8 +39,6 @@
     * [Write Modular Code](#write-modular-code)
         * [Private module](#private-module)
         * [Module with Public API](#module-with-public-api)
-        * [Making a module testable](#making-a-module-testable)
-        * AMD
     * [Best Practices](#best-practices)
         * Animate and Style with CSS, not JavaScript
         * [Declaring Variables](#declaring-variables)
@@ -825,32 +823,6 @@ define("InterstitialModal", ["minQ", "InterstitialModal"], function($, dependenc
 
 NOTE: we used to use the revealing module pattern for this. It was not as testable as AMD modules due to the non-reinitialized state that can be captured in the IFFE and cause conflicts between unit test runs. The AMD pattern also simplifies namespace creation, provides better documentation, and reduces file-include-order dependencies.
 
-#### Making a module testable
-
-We use QUnit, so if QUnit is on the window, expose your normally private methods for testing. Optionally don't run our normal initialization method.
-
-```javascript
-var myModule = (function (myModule) {
-    'use strict';
-    var initialize = function () {
-        // initialize
-    };
-
-    myModule.publicMethod = function () {
-        //...
-    };
-
-    if (!window.QUnit) {
-        // initialize as normal if no QUnit
-        initialize();
-    } else {
-        // expose normally private functions for testing if needed
-        myModule.initialize = initialize;
-    }
-
-    return myModule;
-})(myModule || {});
-```
 
 ## Responsive Design
 
