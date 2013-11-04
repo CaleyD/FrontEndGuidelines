@@ -7,7 +7,7 @@
 * [Markup](#markup)
     * [HTML5](#html5)
     * [General Markup Guidelines]
-* [Styles]
+* [Styles](#styles)
     * [Organization](#organization)
     * [Pattern Libary](#pattern-library)
     * [Themes](#themes)
@@ -17,13 +17,12 @@
         * [Properties](#properties)
         * [Variables](#variables)
         * [Mixins](#mixins)
-    * [Cross Browser Support]
     * [CSS3]
         * progressive enhancement
     * [Animations]
     * [Stay Rad](#stay-rad)
-* [JavaScript]
-    * [Unit testing](#unit-testing)
+* [JavaScript](#javascript)
+    * [Unit testing](#unit-tests)
     * [Code Quality](#code-quality)
     * [Formatting](#javascript-formatting)
         * [Indentation](#indentation)
@@ -85,11 +84,7 @@ We do not gaurantee that all functionality will work the same between browsers. 
 
 ## Markup
 
-The first component of any web page is the tag-based markup language of HTML. The Hyper Text Markup Language (HTML) has a sordid history but has come into its own in the last few years. After a lengthy experimentation with the XML-based XHTML variant the industry has accepted that HTML is the future of the web.
-
-Markup defines the structure and outline of a document and offers a structured content. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style 
-
-sheets.
+Markup defines the structure and outline of a document and offers a structured content. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style sheets.
 
 * Defines content
 * Establishes Information Heirarchy
@@ -110,16 +105,14 @@ We use the HTML5 Doctype and will use HTML5 features when appropriate.
 
 ### General Markup Guidelines
 
-The following are general guidelines for structuring your HTML markup. Authors are reminded to always use markup which represents the semantics of the content in the 
-
-document being created.
+The following are general guidelines for structuring your HTML markup. Authors are reminded to always use markup which represents the semantics of the content in the document being created.
 
 * Use actual `p` elements for paragraph delimiters as opposed to multiple `br` tags.
-* Make use of `dl` (definition lists) and `blockquote`, when appropriate.
 * Items in list form should always be housed in a `ul`, `ol`, or `dl`, never a set of `div`s or `p`s.
-* Use label fields to label each form field, the `for` attribute should associate itself with the input field, so users can click the labels.
-* Never use tables for layout.
+* Use label fields to label each form field. Either wrap the input field with a label tag or use the label's `for` attribute to associate itself with the input field, so users can click the labels.
+* NEVER use tables for layout.
 * Use microformats and/or Microdata where appropriate, specifically hCard and adr.
+* Make use of `dl` (definition lists) and `blockquote`, when appropriate.
 * Make use of `thead`, `tbody`, and `th` tags (and Scope attribute) when appropriate.
 * Table markup with proper syntax (`thead`, `tbody`, `th [scope]`)
 
@@ -141,9 +134,7 @@ document being created.
         </tbody>
     </table>
     ```
-* ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property text-
-
-transform:uppercase/lowercase.
+* ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property `text-transform:uppercase/lowercase`.
 
 #### Quoting Attributes
 
