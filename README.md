@@ -759,6 +759,8 @@ jQuery promotes some no-so-great practices. These should be avoided:
 
 ### Write Modular Code
 
+Prefer small, decoupled, independent, and cohesive modules of functionality over big architectures.
+
 Why modules?
     
 > Now that we're delivering page content faster, the next step is to ensure that our JavaScript is loaded and the application is interactive as soon as possible. To do that, we need to minimize the amount of JavaScript we use: smaller payload over the wire, fewer lines of code to parse, faster to execute. To make sure we only download the JavaScript necessary for the page to work, we needed to get a firm grip on our dependencies.
@@ -954,6 +956,8 @@ http://www.mediawiki.org/wiki/Front-End_Coding_Standards
 https://github.com/bitmap/less-style
 https://github.com/objectfoo/js-style/blob/master/guide.md
 
+<!--
+
 ## TODO
 
 CSS Specificity Wars (http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html)
@@ -963,7 +967,6 @@ Developer settings
     .LESS tools
     VS2012 text editor settings
 
-Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
 
 IE8 represents ~40% of our traffic today.
 
@@ -998,7 +1001,7 @@ JavaScript
         Shared WHS settings
     Modular
         AMD
-        Prefer small, decoupled, independent, and cohesive modules of functionality over connected architecture
+        
     Do not pollute the global namespace
         Global objects are bad, avoid them.
     Prefer scripts that do not expose any global api
@@ -1013,5 +1016,6 @@ JavaScript
     
 Progressive Enhancement
 
-
+	Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
+-->
 
