@@ -69,6 +69,7 @@
 
 This document contains guidelines for web applications built by WHS. It is to be readily available to anyone who wishes to check the iterative progress of our best practices.
 
+This document's primary motivation is to promote code consistency. By maintaining consistency in coding styles and conventions, we can ease the burden of legacy code maintenance, and mitigate risk of breakage in the future. By adhering to best practices, we ensure a consistent user experience, optimized page loading, and maintainable code.
 
 This document outlines the conventions we use at WHS. This is an open document and everything is up for discussion/consideration. We have a tremendous amount of legacy code that does not adhere to these rules, and if you find yourself in one of those files it is in everyone's best interest to refactor it.
 
@@ -83,6 +84,7 @@ We do not guarantee that all functionality will work the same between browsers. 
 
 ## Markup
 
+Markup defines the structure and outline of a document. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style sheets.
 
 * Defines content
 * Establishes Information Hierarchy
@@ -90,7 +92,7 @@ We do not guarantee that all functionality will work the same between browsers. 
 
 ### HTML5
 
-HTML5 is a new version of HTML and XHTML. The HTML5 draft specification defines a single language that can be written in HTML and XML. It attempts to solve issues found in previous iterations of HTML and addresses the needs of web applications, an area previously not adequately covered by HTML. (source).
+HTML5 is a new version of HTML and XHTML. The HTML5 draft specification defines a single language that can be written in HTML and XML. It attempts to solve issues found in previous iterations of HTML and addresses the needs of web applications, an area previously not adequately covered by HTML4. [source](http://www.w3.org/TR/html5-diff/#history).
 
 We use the HTML5 Doctype and will use HTML5 features when appropriate.
 
