@@ -69,7 +69,6 @@
 
 This document contains guidelines for web applications built by WHS. It is to be readily available to anyone who wishes to check the iterative progress of our best practices.
 
-This document's primary motivation is two-fold: 1) code consistency and 2) best practices. By maintaining consistency in coding styles and conventions, we can ease the burden of legacy code maintenance, and mitigate risk of breakage in the future. By adhering to best practices, we ensure a consistent user experience, optimized page loading, and maintainable code.
 
 This document outlines the conventions we use at WHS. This is an open document and everything is up for discussion/consideration. We have a tremendous amount of legacy code that does not adhere to these rules, and if you find yourself in one of those files it is in everyone's best interest to refactor it.
 
