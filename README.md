@@ -9,7 +9,7 @@
     * [General Markup Guidelines]
 * [Styles](#styles)
     * [Organization](#organization)
-    * [Pattern Libary](#pattern-library)
+    * [Pattern Library](#pattern-library)
     * [Themes](#themes)
     * [Style Guide](#style-guide)
         * [Indentation](#indentation)
@@ -53,15 +53,15 @@
     * Create Markup on the Server
     * Limit Number of Requests
         * Combine CSS
-        * Comine JS
+        * Combine JS
         * Combine Images
-    * Optimize inlude order
+    * Optimize include order
     * Embed CSS and JS when appropriate
     * Tools to test performance
 * [Principles]
     * Separation of Content, Style, and Behavior
     * Consistency
-    * Prefer progressive enhancement to polyfilling
+    * Prefer progressive enhancement to polyfills
 * [Working With Design]
 * [References]
 
@@ -69,7 +69,7 @@
 
 This document contains guidelines for web applications built by WHS. It is to be readily available to anyone who wishes to check the iterative progress of our best practices.
 
-This document's primary motivation is two-fold: 1) code consistency and 2) best practices. By maintaining consistency in coding styles and conventions, we can ease the burden of legacy code maintenance, and mitigate risk of breakage in the future. By adhering to best practices, we ensure a consistent user experience, optimized page loading, and maintainable code.
+This document's primary motivation is to promote code consistency. By maintaining consistency in coding styles and conventions, we can ease the burden of legacy code maintenance, and mitigate risk of breakage in the future. By adhering to best practices, we ensure a consistent user experience, optimized page loading, and maintainable code.
 
 This document outlines the conventions we use at WHS. This is an open document and everything is up for discussion/consideration. We have a tremendous amount of legacy code that does not adhere to these rules, and if you find yourself in one of those files it is in everyone's best interest to refactor it.
 
@@ -78,30 +78,29 @@ These guidelines are not specific to WHS. Our product is not unique enough to wa
 
 ## Supported Browsers
 
-http://foswiki.dev.webmd.com/bin/view.pl/Main/SupportedBrowsers
+[Supported Browser List](http://foswiki.dev.webmd.com/bin/view.pl/Main/SupportedBrowsers)
 
-We do not gaurantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features. 
+We do not guarantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features. 
 
 ## Markup
 
-Markup defines the structure and outline of a document and offers a structured content. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style sheets.
+Markup defines the structure and outline of a document. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style sheets.
 
 * Defines content
-* Establishes Information Heirarchy
+* Establishes Information Hierarchy
 * Adds semantic context to content
 
 ### HTML5
 
-HTML5 is a new version of HTML and XHTML. The HTML5 draft specification defines a single language that can be written in HTML and XML. It attempts to solve issues found in previous iterations of HTML and addresses the needs of web applications, an area previously not adequately covered by HTML. (source).
+HTML5 is a new version of HTML and XHTML. The HTML5 draft specification defines a single language that can be written in HTML and XML. It attempts to solve issues found in previous iterations of HTML and addresses the needs of web applications, an area previously not adequately covered by HTML4. [source](http://www.w3.org/TR/html5-diff/#history).
 
 We use the HTML5 Doctype and will use HTML5 features when appropriate.
 
 ?? We will test our markup against the W3C validator, to ensure that the markup is well formed. 100% valid code is not a goal, but validation certainly helps to write more maintainable sites as well as debugging code. We do not guarantee code is 100% valid, but instead assures the cross-browser experience is fairly consistent. ??
 
-#### Use HTML5 input[type=XXXX]
+#### Use Attribute Selectors
 
-
-
+[Attribute Selectors](http://www.w3.org/TR/css3-selectors/#selectors) are magic.
 
 ### General Markup Guidelines
 
@@ -111,36 +110,35 @@ The following are general guidelines for structuring your HTML markup. Authors a
 * Items in list form should always be housed in a `ul`, `ol`, or `dl`, never a set of `div`s or `p`s.
 * Use label fields to label each form field. Either wrap the input field with a label tag or use the label's `for` attribute to associate itself with the input field, so users can click the labels.
 * NEVER use tables for layout.
-* Use microformats and/or Microdata where appropriate, specifically hCard and adr.
+* Use [Microformats](http://microformats.org/) and/or [Microdata](http://en.wikipedia.org/wiki/Microdata_(HTML)) where appropriate, specifically hCard and adr.
 * Make use of `dl` (definition lists) and `blockquote`, when appropriate.
 * Make use of `thead`, `tbody`, and `th` tags (and Scope attribute) when appropriate.
 * Table markup with proper syntax (`thead`, `tbody`, `th [scope]`)
 
-    ```html
-    <table>
-        <thead>
-            <tr>
-                <th>Table header 0</th>
-                <th>Table header 1</th>
-                <th>Table header 2</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Row header</th>
-                <td>Table data 1</td>
-                <td>Table data 2</td>
-            </tr>
-        </tbody>
-    </table>
-    ```
+```html
+<table>
+    <thead>
+        <tr>
+            <th>Table header 0</th>
+            <th>Table header 1</th>
+            <th>Table header 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Row header</th>
+            <td>Table data 1</td>
+            <td>Table data 2</td>
+        </tr>
+    </tbody>
+</table>
+```
+
 * ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property `text-transform:uppercase/lowercase`.
 
 #### Quoting Attributes
 
-The HTML5 specification defines quotes around attributes values as optional. For consistency with attributes that accept whitespace, all attributes values should be 
-
-quoted.
+The HTML5 specification defines quotes around attributes values as optional. For consistency with attributes that accept whitespace, all attributes values should be quoted.
 
 ```html
 <p class="line note" data-attribute="106">This is my paragraph of special text.</p>
@@ -337,7 +335,7 @@ CSS3 properties that support layering should be on separate lines, with the semi
 
 #### Variables
 
-In LESS, variables are declared with `@` precending the name.
+In LESS, variables are declared with `@` preceding the name.
 
 ```css
 @themeColor: #F00;
@@ -632,9 +630,9 @@ It's a good idea to add blank lines:
 ### JsHint
 
 We use jsHint to enforce a consistent coding style and to help prevent JavaScript errors.
-http://blog.stevensanderson.com/2012/08/17/using-jshint-inside-visual-studio-the-basics/
+[Using JsHint inside Visual Studio - the basics](http://blog.stevensanderson.com/2012/08/17/using-jshint-inside-visual-studio-the-basics/)
 
-make sure your code passes [JsHint](http://jshint.com/). If you must include code that doesn't pass the JsHint check add a [directive](http://jshint.com/docs/#directives) to make it pass.
+make sure your code passes [JsHint](http://jshint.com/). If you must include code that doesn't pass add a [directive](http://jshint.com/docs/#directives) to make it pass.
 
 ```javascript
 /*global jQuery*/ // jshint option: to declare jQuery a valid global
@@ -729,20 +727,24 @@ Do not default to using jQuery for everything. It is a large library that includ
 jQuery promotes some no-so-great practices. These should be avoided:
 * `$(document).ready(function(){...})` instead just put your scripts at the bottom of the markup and don't depend on CSS.
 * setting style with jQuery
+
     These are just as bad as setting inline styles in HTML:
+
     * `$('.item').hide('slow')` - this effectively sets an inline style of `display:none`
     * `$('.item').show('fast')`
     * `$('.item').toggle()`
     * `$('.item').css({color: 'red'})` - this effectively sets an inline style of `color:red`
 
-    prefer
+    Prefer
+
     * `$('.item').removeClass('is-visible')`
     * `$('.item').addClass('is-visible')`
     * `$('.item').toggleClass('is-visible')`
     * `$('.item').addClass('is-error')`
-    And ___move styling and animation decisions to CSS, where they belong___.
 
-    [Updating styles via class name rather than setting styles from script is also faster](http://jsperf.com/change-class-vs-inline-styling/5)
+And ___move styling and animation decisions to CSS, where they belong___.
+
+Updating styles via class name rather than setting styles from script is also [faster](http://jsperf.com/change-class-vs-inline-styling/5)
 
 ### Delegated Event Handlers
 
@@ -819,7 +821,7 @@ NOTE: we used to use the revealing module pattern for this. It was not as testab
 
 ## Responsive Design
 
-There is no mobile web, there is no m.webmdhealth.com site, all functionality should be available to all of our supported browsers/devices provided by the same 
+There is no mobile web, there is no `http://m.webmdhealth.com` site, all functionality should be available to all of our supported browsers/devices provided by the same 
 
 HTML/CSS/JavaScript.
 
