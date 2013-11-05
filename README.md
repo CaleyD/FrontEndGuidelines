@@ -83,7 +83,6 @@ We do not guarantee that all functionality will work the same between browsers. 
 
 ## Markup
 
-Markup defines the structure and outline of a document and offers a structured content. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style sheets.
 
 * Defines content
 * Establishes Information Hierarchy
