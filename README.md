@@ -138,9 +138,7 @@ The following are general guidelines for structuring your HTML markup. Authors a
 
 #### Quoting Attributes
 
-The HTML5 specification defines quotes around attributes values as optional. For consistency with attributes that accept whitespace, all attributes values should be 
-
-quoted.
+The HTML5 specification defines quotes around attributes values as optional. For consistency with attributes that accept whitespace, all attributes values should be quoted.
 
 ```html
 <p class="line note" data-attribute="106">This is my paragraph of special text.</p>
