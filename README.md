@@ -727,20 +727,24 @@ Do not default to using jQuery for everything. It is a large library that includ
 jQuery promotes some no-so-great practices. These should be avoided:
 * `$(document).ready(function(){...})` instead just put your scripts at the bottom of the markup and don't depend on CSS.
 * setting style with jQuery
+
     These are just as bad as setting inline styles in HTML:
+
     * `$('.item').hide('slow')` - this effectively sets an inline style of `display:none`
     * `$('.item').show('fast')`
     * `$('.item').toggle()`
     * `$('.item').css({color: 'red'})` - this effectively sets an inline style of `color:red`
 
-    prefer
+    Prefer
+
     * `$('.item').removeClass('is-visible')`
     * `$('.item').addClass('is-visible')`
     * `$('.item').toggleClass('is-visible')`
     * `$('.item').addClass('is-error')`
-    And ___move styling and animation decisions to CSS, where they belong___.
 
-    [Updating styles via class name rather than setting styles from script is also faster](http://jsperf.com/change-class-vs-inline-styling/5)
+And ___move styling and animation decisions to CSS, where they belong___.
+
+Updating styles via class name rather than setting styles from script is also [faster](http://jsperf.com/change-class-vs-inline-styling/5)
 
 ### Delegated Event Handlers
 
