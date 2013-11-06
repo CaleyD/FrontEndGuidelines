@@ -11,7 +11,7 @@
     * [Organization](#organization)
     * [Pattern Library](#pattern-library)
     * [Themes](#themes)
-    * [Style Guide](#style-guide)
+    * [Code Formatting](#css-code-formatting)
     * [Stay Rad](#stay-rad)
 * [JavaScript](#javascript)
     * [Unit testing](#unit-tests)
@@ -19,8 +19,6 @@
     * [Formatting](#javascript-formatting)
     * [JsHint](#jshint)
     * [Write Modular Code](#write-modular-code)
-        * [Private module](#private-module)
-        * [Module with Public API](#module-with-public-api)
     * [Best Practices](#best-practices)
 * [Responsive Design](#responsive-design)
 * [Accessibility](#accessibility)
@@ -28,37 +26,6 @@
 * [Working With the Design Team](#working-with-the-design-team)
 * [References](#references)
 
-<!--
-        * [Indentation](#indentation)
-        * [Selectors](#selectors)
-        * [Properties](#properties)
-        * [Variables](#variables)
-        * [Mixins](#mixins)
--->
-<!--
-        * [Indentation](#indentation)
-        * [Statement Termination](#statement-termination)
-        * [Line Length](#line-length)
-        * [Blank Lines](#blank-lines)
-        * [Naming](#naming)
-        * [Equality Operators](#equality-operators)
-        * [Ternary Operator](#ternary-operator)
-        * [Compound Statements](#compound-statements)
-        * [White Space](#white-space)
--->
- <!--
-        * Animate and Style with CSS, not JavaScript
-        * [Declaring Variables](#declaring-variables)
-        * Manage State, Not Style
-        * Use delegated events
-    * Third-party libraries and plugins
-    -->
-<!--
-* [Principles]
-    * Separation of Content, Style, and Behavior
-    * Consistency
-    * Prefer progressive enhancement to polyfills
--->
 
 ## Overview
 
@@ -217,7 +184,7 @@ Here's a good example of how to use theme variables wisely.
 }
 ```
 
-### Style Guide
+### CSS Code Formatting
 
 We want to make sure our LESS looks familiar to everyone editing it. That's why these guidelines are not simply suggestions, but the *de facto* style you should be coding. The Front-End Community of Practice decides on the style based on our standards. Don't get busted by the COPs.
 
@@ -444,7 +411,6 @@ div {
 __Make sure you're not redefining mixins that exist globally! Check components > common.less__
 
 
-
 ### Stay Rad
 
 * Don't use inline styles
@@ -459,9 +425,6 @@ __Make sure you're not redefining mixins that exist globally! Check components >
 * When importing LESS files, do not put .less extension (`@import 'component'`)
 * If your LESS file is over 100 lines it's time to start breaking things apart
 * If you're doing something dumb, document why with a `//` comment
-
-
-
 
 
 ## Javascript
@@ -876,13 +839,11 @@ functionality required for completion and submission of the form, including all 
 * (p) When a timed response is required, the user shall be alerted and given sufficient time to indicate more time is required.
 
 
-
-
 ## Performance
 
 ### Optimize Images
 
-Use [tinypng](tinypng.com) or similar tool to compress `png` files and speed up downloads.
+Use [tinypng](tinypng.com) or similar tool to compress `png` (and other image) files to speed up downloads.
 
 ### Limit # of http requests
 
@@ -922,8 +883,8 @@ Mockups are great but they shouldn't be used to replace face-to-face communicati
 Do not expect (or wait for) pixel-perfect mockups. Question the fidelity of design mockups. Don't necessarily code exactly to mockups. Look for opportunities to leverage standard styles.
 
 Do not expect the site to look the same on different browsers.
-    * It should look consistent within any single browser though.
-    * User's should be able to accomplish everything they need to with whatever supported browser they are using.
+* It should look consistent within any single browser though.
+* User's should be able to accomplish everything they need to with whatever supported browser they are using.
 
 
 ## Tools
@@ -942,8 +903,7 @@ http://taitems.github.io/Front-End-Development-Guidelines/
 http://isobar-idev.github.io/code-standards/
 http://www.mediawiki.org/wiki/Front-End_Coding_Standards
 
-https://github.com/bitmap/less-style
-https://github.com/objectfoo/js-style/blob/master/guide.md
+
 
 <!--
 
