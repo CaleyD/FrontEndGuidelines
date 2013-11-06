@@ -5,7 +5,7 @@
 * [Overview](#overview) 
 * [Supported Browsers](#supported-browsers)
 * [HTML](#markup)
-* [CSS](#styles)
+* [CSS](#css)
 * [JavaScript](#javascript)
 * [Responsive Design](#responsive-design)
 * [Accessibility](#accessibility)
