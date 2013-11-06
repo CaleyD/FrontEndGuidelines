@@ -1,7 +1,5 @@
 ﻿# Front End Coding Guidelines
 
-## Contents
-
 * [Overview](#overview) 
 * [Supported Browsers](#supported-browsers)
 * [HTML](#markup)
