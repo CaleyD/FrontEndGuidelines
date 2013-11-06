@@ -6,7 +6,7 @@
 * [Supported Browsers](#supported-browsers)
 * [Markup](#markup)
     * [HTML5](#html5)
-    * [General Markup Guidelines](#General-Markup-Guidelines)
+    * [General Markup Guidelines](#general-markup-guidelines)
 * [Styles](#styles)
     * [Organization](#organization)
     * [Pattern Library](#pattern-library)
@@ -17,7 +17,6 @@
         * [Properties](#properties)
         * [Variables](#variables)
         * [Mixins](#mixins)
-    * [Animations]
     * [Stay Rad](#stay-rad)
 * [JavaScript](#javascript)
     * [Unit testing](#unit-tests)
@@ -44,23 +43,12 @@
     * Third-party libraries and plugins
 * [Responsive Design](#responsive-design)
 * [Accessibility](#accessibility)
-    * Standards Compliance
-    * Simple Markup
-    * WAI-ARIA
-* [Performance](#Performance)
-    * Create Markup on the Server
-    * Limit Number of Requests
-        * Combine CSS
-        * Combine JS
-        * Combine Images
-    * Optimize include order
-    * Embed CSS and JS when appropriate
-    * Tools to test performance
+* [Performance](#performance)
 * [Principles]
     * Separation of Content, Style, and Behavior
     * Consistency
     * Prefer progressive enhancement to polyfills
-* [Working With the Design Team](#Working-with-the-Design-Team)
+* [Working With the Design Team](#working-with-the-design-team)
 * [References](#references)
 
 ## Overview
