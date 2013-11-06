@@ -4,20 +4,9 @@
 
 * [Overview](#overview) 
 * [Supported Browsers](#supported-browsers)
-* [Markup](#markup)
-    * [HTML5](#html5)
-    * [General Markup Guidelines](#general-markup-guidelines)
-* [Styles](#styles)
-    * [Organization](#organization)
-    * [Pattern Library](#pattern-library)
-    * [Themes](#themes)
-    * [Code Formatting](#css-code-formatting)
-    * [Stay Rad](#stay-rad)
+* [HTML](#markup)
+* [CSS](#styles)
 * [JavaScript](#javascript)
-    * [Unit testing](#unit-tests)
-    * [Code Formatting](#javascript-formatting)
-    * [JsHint](#jshint)
-    * [Write Modular Code](#write-modular-code)
 * [Responsive Design](#responsive-design)
 * [Accessibility](#accessibility)
 * [Performance](#performance)
@@ -27,7 +16,7 @@
 
 ## Overview
 
-This document contains guidelines for web applications built by WHS. It is to be readily available to anyone who wishes to check the iterative progress of our best practices.
+This document contains guidelines for web applications built by WHS. Its readily available to anyone who wishes to check or contribute to the iterative progress of our best practices.
 
 This document's primary motivation is to promote code consistency. By maintaining consistency in coding styles and conventions, we can ease the burden of legacy code maintenance, and mitigate risk of breakage in the future. By adhering to best practices, we ensure a consistent user experience, optimized page loading, and maintainable code.
 
@@ -42,7 +31,7 @@ These guidelines are not specific to WHS. Our product is not unique enough to wa
 
 We do not guarantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features. 
 
-## Markup
+## HTML
 
 Markup defines the structure and outline of a document. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style sheets.
 
@@ -105,7 +94,14 @@ The HTML5 specification defines quotes around attributes values as optional. For
 ```
 
 
-## Styles
+## CSS
+
+
+* [Organization](#organization)
+* [Pattern Library](#pattern-library)
+* [Themes](#themes)
+* [Code Formatting](#css-code-formatting)
+* [Stay Rad](#stay-rad)
 
 The second component of a web page is the presentation information contained in the Cascading Style Sheet (CSS.) Web browsers successful implementation of CSS has given web authors site-wide control over the look and feel of their web sites.
 
@@ -427,6 +423,11 @@ __Make sure you're not redefining mixins that exist globally! Check components >
 
 ## Javascript
 
+* [Unit testing](#unit-tests)
+* [Code Formatting](#javascript-formatting)
+* [JsHint](#jshint)
+* [Write Modular Code](#write-modular-code)
+    
 JavaScript can be added to augment existing functionality on a page. JavaScript is a last resort. Do not use JavaScript to style the page. 
 
 Do not rely on JavaScript to render the initial page contents. [Read about Twitter's dropping hash urls](https://blog.twitter.com/2012/improving-performance-twittercom)
