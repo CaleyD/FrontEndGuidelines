@@ -12,16 +12,19 @@
     * [Pattern Library](#pattern-library)
     * [Themes](#themes)
     * [Style Guide](#style-guide)
+<!--
         * [Indentation](#indentation)
         * [Selectors](#selectors)
         * [Properties](#properties)
         * [Variables](#variables)
         * [Mixins](#mixins)
+-->
     * [Stay Rad](#stay-rad)
 * [JavaScript](#javascript)
     * [Unit testing](#unit-tests)
     * [Code Quality](#code-quality)
     * [Formatting](#javascript-formatting)
+<!--
         * [Indentation](#indentation)
         * [Statement Termination](#statement-termination)
         * [Line Length](#line-length)
@@ -31,23 +34,28 @@
         * [Ternary Operator](#ternary-operator)
         * [Compound Statements](#compound-statements)
         * [White Space](#white-space)
+-->
     * [JsHint](#jshint)
     * [Write Modular Code](#write-modular-code)
         * [Private module](#private-module)
         * [Module with Public API](#module-with-public-api)
     * [Best Practices](#best-practices)
+ <!--
         * Animate and Style with CSS, not JavaScript
         * [Declaring Variables](#declaring-variables)
         * Manage State, Not Style
         * Use delegated events
     * Third-party libraries and plugins
+    -->
 * [Responsive Design](#responsive-design)
 * [Accessibility](#accessibility)
 * [Performance](#performance)
+<!--
 * [Principles]
     * Separation of Content, Style, and Behavior
     * Consistency
     * Prefer progressive enhancement to polyfills
+-->
 * [Working With the Design Team](#working-with-the-design-team)
 * [References](#references)
 
