@@ -432,7 +432,7 @@ JavaScript can be added to augment existing functionality on a page. JavaScript 
 
 Do not rely on JavaScript to render the initial page contents. [Read about Twitter's dropping hash urls](https://blog.twitter.com/2012/improving-performance-twittercom)
 
-### Formatting (#javascript-formatting)
+### Formatting
 
 #### Indentation
 
