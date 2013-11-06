@@ -562,12 +562,6 @@ var i,
 for (i = 0, len = 10; i < 10; i++) {
     // ...
 }
-
-var prop;
-
-for (prop in someObject) {
-    // ...
-}
 ```
 
 #### White Space
