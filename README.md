@@ -6,7 +6,7 @@
 * [Supported Browsers](#supported-browsers)
 * [Markup](#markup)
     * [HTML5](#html5)
-    * [General Markup Guidelines]
+    * [General Markup Guidelines](#General-Markup-Guidelines)
 * [Styles](#styles)
     * [Organization](#organization)
     * [Pattern Library](#pattern-library)
@@ -45,11 +45,11 @@
         * Use delegated events
     * Third-party libraries and plugins
 * [Responsive Design](#responsive-design)
-* [Accessibility]
+* [Accessibility](#accesibility)
     * Standards Compliance
     * Simple Markup
     * WAI-ARIA
-* [Performance]
+* [Performance](#Performance)
     * Create Markup on the Server
     * Limit Number of Requests
         * Combine CSS
@@ -62,8 +62,8 @@
     * Separation of Content, Style, and Behavior
     * Consistency
     * Prefer progressive enhancement to polyfills
-* [Working With Design]
-* [References]
+* [Working With the Design Team](#Working-with-the-Design-Team)
+* [References](#references)
 
 ## Overview
 
@@ -920,13 +920,16 @@ The following is from Twitter(https://blog.twitter.com/2012/improving-performanc
 
 ## Working with the Design Team
 
-do not expect (or wait for) pixel-perfect design
-do not expect the site to look the same on different browsers
-    it should look consistent within any single browser though.
-    user's should be able to accomplish everything they need to with whatever supported browser they are using.
-question fidelity of designs
-don't code exactly to mockups. look for opportunities to leverage standard styles
-collaborate
+Designers should be considered an integral part of our development teams. They have great knowledge of both visual and user experience design. It's important to collaborate with the design team when iterating on product features. 
+
+Mockups are great but they shouldn't be used to replace face-to-face communication.
+
+Do not expect (or wait for) pixel-perfect mockups. Question the fidelity of design mockups. Don't necessarily code exactly to mockups. Look for opportunities to leverage standard styles.
+
+Do not expect the site to look the same on different browsers.
+    * It should look consistent within any single browser though.
+    * User's should be able to accomplish everything they need to with whatever supported browser they are using.
+
 
 ## Tools
 
@@ -938,9 +941,7 @@ collaborate
 
 ## References
 
-This guide borrows heavily from around the net and [Nicholas Zakas](https://www.twitter.com/slicknet)' book [Maintainable Javascript]
-
-(http://www.amazon.com/Maintainable-JavaScript-ebook/dp/B0082CXEB0).
+This guide borrows heavily from around the net and [Nicholas Zakas](https://www.twitter.com/slicknet)' book [Maintainable Javascript](http://www.amazon.com/Maintainable-JavaScript-ebook/dp/B0082CXEB0).
 
 http://taitems.github.io/Front-End-Development-Guidelines/
 http://isobar-idev.github.io/code-standards/
