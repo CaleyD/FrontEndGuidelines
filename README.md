@@ -15,11 +15,9 @@
     * [Stay Rad](#stay-rad)
 * [JavaScript](#javascript)
     * [Unit testing](#unit-tests)
-    * [Code Quality](#code-quality)
-    * [Formatting](#javascript-formatting)
+    * [Code Formatting](#javascript-formatting)
     * [JsHint](#jshint)
     * [Write Modular Code](#write-modular-code)
-    * [Best Practices](#best-practices)
 * [Responsive Design](#responsive-design)
 * [Accessibility](#accessibility)
 * [Performance](#performance)
@@ -439,6 +437,34 @@ Do not rely on JavaScript to render the initial page contents. [Read about Twitt
 
 Indent with a tab, do not mix spaces and tabs.
 
+
+#### Declaring variables
+
+Declare variables at the beginning of their scope in a single statement. Declaring variables in a single statement performs faster than spreading them around, minifies better, makes them easier to find, and reduces [hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting) errors.
+
+```javascript
+(function (){
+    'use strict';
+    // declare module wide variables at the beginning of module scope in a single statement
+    var moduleA = 4,
+        moduleB = 5;
+
+    function aFunc (msg) {
+        // declare local variables at the beginning of function scope
+        var standardGreeting = 'Hello';
+
+        if (!!msg) {
+            return standardGreeting + ' A: ' + moduleA;
+        } else {
+            return msg + 'B: ' + moduleB;
+        }
+    }
+
+    alert(aFunc()); // Hello A: 4
+    alert(aFunc('ohai!')); // ohai! B: 5
+})();
+```
+
 #### Statement Termination
 
 Always include semi-colons, don't rely on Javscript's [automatic semi-colon insertion](http://bclary.com/2004/11/07/#a-7.9.1) rules.
@@ -619,34 +645,6 @@ Always use [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
     // do something
 
-})();
-```
-
-
-### Declaring variables
-
-Declare variables at the beginning of their scope in a single statement. Declaring variables in a single statement performs faster than spreading them around, minifies better, makes them easier to find, and reduces [hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting) errors.
-
-```javascript
-(function (){
-    'use strict';
-    // declare module wide variables at the beginning of module scope in a single statement
-    var moduleA = 4,
-        moduleB = 5;
-
-    function aFunc (msg) {
-        // declare local variables at the beginning of function scope
-        var standardGreeting = 'Hello';
-
-        if (!!msg) {
-            return standardGreeting + ' A: ' + moduleA;
-        } else {
-            return msg + 'B: ' + moduleB;
-        }
-    }
-
-    alert(aFunc()); // Hello A: 4
-    alert(aFunc('ohai!')); // ohai! B: 5
 })();
 ```
 
