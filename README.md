@@ -17,8 +17,6 @@
         * [Properties](#properties)
         * [Variables](#variables)
         * [Mixins](#mixins)
-    * [CSS3]
-        * progressive enhancement
     * [Animations]
     * [Stay Rad](#stay-rad)
 * [JavaScript](#javascript)
@@ -45,7 +43,7 @@
         * Use delegated events
     * Third-party libraries and plugins
 * [Responsive Design](#responsive-design)
-* [Accessibility](#accesibility)
+* [Accessibility](#accessibility)
     * Standards Compliance
     * Simple Markup
     * WAI-ARIA
