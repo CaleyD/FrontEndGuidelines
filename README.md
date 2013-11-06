@@ -45,8 +45,6 @@ HTML5 is a new version of HTML and XHTML. The HTML5 draft specification defines 
 
 We use the HTML5 Doctype and will use HTML5 features when appropriate.
 
-?? We will test our markup against the W3C validator, to ensure that the markup is well formed. 100% valid code is not a goal, but validation certainly helps to write more maintainable sites as well as debugging code. We do not guarantee code is 100% valid, but instead assures the cross-browser experience is fairly consistent. ??
-
 #### Use Attribute Selectors
 
 [Attribute Selectors](http://www.w3.org/TR/css3-selectors/#selectors) are magic.
