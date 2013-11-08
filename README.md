@@ -14,7 +14,7 @@
 
 ## Overview
 
-This document contains guidelines for web applications built by WHS. Its available to anyone who wishes to check or contribute our best practices.
+This document contains guidelines for web applications built by WHS. It is available to anyone who wishes to check or contribute our best practices.
 
 This document's primary motivation is to promote code consistency. By maintaining consistency in coding styles and conventions, we can ease the burden of legacy code maintenance, and mitigate risk of breakage in the future. By adhering to best practices, we ensure a consistent user experience, optimized page loading, and maintainable code.
 
