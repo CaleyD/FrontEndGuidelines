@@ -137,11 +137,11 @@ You should include exactly __one__ stylesheet on your page and no more. This bas
 
 ```
 homepage styles
-|--- homepage.less
-|--- layout.less
-|--- featuredNews.less
-|--- featuredVideo.less
-|--- promoWeblets.less
+|-- homepage.less
+|-- layout.less
+|-- featuredNews.less
+|-- featuredVideo.less
+|-- promoWeblets.less
 ```
 
 `homepage.less` is included on the page and imports the different files for each section like this:
