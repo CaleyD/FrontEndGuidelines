@@ -14,14 +14,13 @@
 
 ## Overview
 
-This document contains guidelines for web applications built by WHS. Its readily available to anyone who wishes to check or contribute to the iterative progress of our best practices.
+This document contains guidelines for web applications built by WHS. It is available to anyone who wishes to check or contribute our best practices.
 
 This document's primary motivation is to promote code consistency. By maintaining consistency in coding styles and conventions, we can ease the burden of legacy code maintenance, and mitigate risk of breakage in the future. By adhering to best practices, we ensure a consistent user experience, optimized page loading, and maintainable code.
 
 This document outlines the conventions we use at WHS. This is an open document and everything is up for discussion/consideration. We have a tremendous amount of legacy code that does not adhere to these rules, and if you find yourself in one of those files it is in everyone's best interest to refactor it.
 
-These guidelines are not specific to WHS. Our product is not unique enough to warrant deviations from industry standards. Much of this document has been adapted from other front end development guidelines. We're not developing on a seperate internet or for a unique browser, so we shouldn't need to invent new standards.
-
+These guidelines are not specific to WHS. Our product is not unique enough to warrant deviations from industry standards. Much of this document has been adapted from other front end development guidelines. We're not developing on a separate internet or for a unique browser, so we shouldn't need to invent new standards.
 
 ## Supported Browsers
 
@@ -45,7 +44,19 @@ We use the HTML5 Doctype and will use HTML5 features when appropriate.
 
 #### Use Attribute Selectors
 
-[Attribute Selectors](http://www.w3.org/TR/css3-selectors/#selectors) are magic.
+[Attribute Selectors](http://www.w3.org/TR/css3-selectors/#selectors) are magic and can be used to target elements without adding a class or ID.
+
+```html
+// target elements on a page that link to pdf documents
+<style>
+	a[href$=".pdf"] {
+		padding-right: 20px;
+		background: url(magic-pdf-icon.png) no-repeat left center;
+	}
+</style>
+
+<a title="Important pdf" href="important.pdf">Important pdf</a>
+```
 
 ### General Markup Guidelines
 
@@ -89,9 +100,7 @@ The HTML5 specification defines quotes around attributes values as optional. For
 <p class="line note" data-attribute="106">This is my paragraph of special text.</p>
 ```
 
-
 ## CSS
-
 
 * [Organization](#organization)
 * [Pattern Library](#pattern-library)
@@ -99,42 +108,41 @@ The HTML5 specification defines quotes around attributes values as optional. For
 * [Code Formatting](#css-code-formatting)
 * [Stay Rad](#stay-rad)
 
-The second component of a web page is the presentation information contained in the Cascading Style Sheet (CSS.) Web browsers successful implementation of CSS has given web authors site-wide control over the look and feel of their web sites.
+The second component of a web page is the presentation information contained in the Cascading Style Sheet (CSS). Web browsers successful implementation of CSS has given web authors site-wide control over the look and feel of their web sites.
 
 Just as the information on a web page is semantically described in the HTML Markup, CSS describes all presentation aspects of the page via a description of its visual properties. CSS is powerful in that these properties are mixed and matched via identifiers to control the page's layout and visual characteristics through the layering of style rules (the "cascade").
 
-We use the [.LESS CSS preprocessor](www.dotlesscss.org) to aid our CSS generation.
+We use the [.LESS CSS preprocessor](www.dotlesscss.org) to aid our CSS generation. Care should be taken when writing css .LESS makes it easy to nest selectors that compile into long selectors. Long selectors chains can cause file bloat, selector precedence problems, adversely affect problems and make css harder to maintain and edit.
 
+__Rule of thumb__
 
-    .LESS makes it easy to nest selectors that compile into long selectors
-        files size bloat
-        performance
-        maintainability (selector wars!)
+* Avoid creating selectors with more than 2 spaces in them
+* Avoid !important
 
-        Rule of thumb 
-            avoid creating selectors with more than 2 spaces in them
-    Get to know CSS Selectors
-        * > 
-        * + 
-        * ~ 
-        * []
-    Avoid !important
-        It is a sign that we have a selector war and other selectors have too high of specificity
+`!important` is a sign that we have a selector war and other selectors have too high of specificity, try to refactor the css instead of adding `!important`.
 
-    SMACSS, OOCSS
-    Embrace CSS3 to progressively enhance styles for newer browsers
-    In 2012 we got rid of rounded corners for <IE9 throughout the site.
-        We didn't hear any client complaints.
-    We aren't all CSS experts, reach out to one of our many knowledgable CSS devs before hacking together a solution in JavaScript.
+Get to know [CSS Selectors](http://www.w3.org/TR/css3-selectors/#selectors).
 
+SMACSS, OOCSS
 
+Embrace CSS3 to progressively enhance styles for newer browsers
 
+In 2012 we got rid of rounded corners for <IE9 throughout the site. We didn't hear any client complaints.
+
+We aren't all CSS experts, reach out to one of our many knowledgable CSS devs before hacking together a solution in JavaScript.
 
 ### Organization
 
 You should include exactly __one__ stylesheet on your page and no more. This base file should then import all dependancies and components. Components and styles for different sections should be contained in their own stylesheet and should not cross-pollinate. The home page styles directory, for example, contains the files 
 
-`homepage.less` `layout.less` `featuredNews.less` `featuredVideo.less` `promoWeblets.less`
+```
+homepage styles
+|-- homepage.less
+|-- layout.less
+|-- featuredNews.less
+|-- featuredVideo.less
+|-- promoWeblets.less
+```
 
 `homepage.less` is included on the page and imports the different files for each section like this:
 
@@ -259,7 +267,7 @@ Specify HEX values for colors
 #FF0138
 ```
 
-Use LESS functions to adjust hue, saturation, lightness, or transparency
+Use [LESS functions](http://lesscss.org/#reference) to adjust hue, saturation, lightness, or transparency
 
 ```css
 color: fade(#000, 50%);
@@ -492,7 +500,7 @@ function MoneyMaker(amount) {
 
     this.money = amount || 1;
     this.addMoney = function (amount) {
-        return this.money += amount;
+        return this.money += amount + ' ' + UI_UNIT;
     };
 }
 
@@ -639,11 +647,11 @@ Always use [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 })();
 ```
 
-
 ### Unit Tests
 
 Automated testing is not optional. You will have to change the way you write JavaScript to make it testable.
 
+		TODO
         QUnit
             Some semantics:
             Unit Tests
@@ -659,13 +667,27 @@ Automated testing is not optional. You will have to change the way you write Jav
 
 JavaScript should be created using Test Driven Development. We use QUnit as our testing framework. We have had a few iterations of unit test patterns. You will see these in the codebase. Model your new tests off of the Health Concierge project.
 
+#### Command-line QUnit test runner coming soon
+
+You will soon be able to execute `> build myapp qunit` to create a qunit html file and execute your application's javascript tests from the command line and a CI build.
+
 Test files should be located at `\unittests\web\[ApplicationName]\`. The paths to individual files within `\unittests\web\[ApplicationName]\` should match the locations of the production files under `\production\web\[ApplicaitonName]\`.
 
-#### Command-line QUnit test runner coming soon
-    You will soon be able to execute `> build myapp qunit` to create a qunit html file and execute your application's javascript tests from the command line and a CI build.
+```
+Production
+|-- Web
+	|-- <Application Name>
+		|-- modulefile.js
+
+UnitTests
+|-- Web
+	|-- <Application Name>
+		|-- config.json (optional)
+		|-- modulefile.tests.js
+		|-- <Application Name>.tests.html (built by cli)
+```
 
 ### JavaScript Architecture
-
 
 ### jQuery usage
 
@@ -695,7 +717,22 @@ Updating styles via class name rather than setting styles from script is also [f
 
 ### Delegated Event Handlers
 
+Don't use 2 event handlers when 1 will do.
 
+```html
+<menu id="addingMachine">
+	<button type="button" data-value="1">add 1</button>
+	<button type="button" data-value="2">add 2</button>
+	<!-- 100 more buttons -->
+</menu>
+
+<script>
+var total = 0;
+dom('#addingMachine').on('click', '[data-value]', function (e) {
+	total += parseInt(dom(e.target).attr('data-value'), 10) || 0;
+});
+</script>
+```
 
 ### Write Modular Code
 
@@ -844,7 +881,7 @@ Use [tinypng](tinypng.com) or similar tool to compress `png` (and other image) f
     * Consider embedding page-specific JavaScript files in HTML response
     * Consider embedding page-specific CSS files in HTML response
 
-### Maximize cachability
+### Maximize cacheability
 
 Referenced CSS, JavaScript and image files will automatically contain caching headers.
 
@@ -945,7 +982,7 @@ JavaScript
     Prefer scripts that do not expose any global api
         When that isn't possible, create as small of an API as possible
         Changing an existing JavaScript API is expensive
-        *JS maintainance is hard, we don't have a compiler to enforce correctness like C#
+        *JS maintenance is hard, we don't have a compiler to enforce correctness like C#
     Prefer small decoupled modules to large monolithic applications
     Do not reach for a third-party library as a first solution
     Do not use jQuery for everything
