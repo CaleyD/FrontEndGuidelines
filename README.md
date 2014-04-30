@@ -167,12 +167,12 @@ There is one more piece of the Pattern Library that contains legacy/deprecated c
 #### BEM, OOCSS
 [BEM](http://bem.info/method/definitions/) is an object-oriented methodology for organizing resuable blocks of mark-up and CSS. Many of our pattern library components are being ported to BEM. It allows us to rapidly prototype and redesign components because they are not coupled to each other.
 
-``
+```css
 .block {}
 .block__element {}
 .block--modifier {}
 
-``
+```
 
 BEM is very easy to wrap your head around, and has helped reduce CSS bloat casued by nesting, overrides, and repetitive mixins. We reccomend you adopt this convention when building applications. [Get to know BEM syntax](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/).
 
@@ -823,7 +823,7 @@ Most of our core applications have LESS files broken up into small modules and c
 
 This is how we'd typically organize a `responsive.less`. Pretend `.foo` and `.bar` are two unrelated pieces of your app.
 
-```
+```css
 @media screen and (max-width: 768px) {
     .foo {color: red;}
     .bar {color: blue;}
@@ -835,7 +835,7 @@ This is how we'd typically organize a `responsive.less`. Pretend `.foo` and `.ba
 }
 ```
 We can greatly simplify that file by calling some mixins.
-```
+```css
 @media screen and (max-width: 768px) {
     .screen-width-768px();
 }
@@ -845,7 +845,7 @@ We can greatly simplify that file by calling some mixins.
 }
 ```
 ...and now at the bottom of our `.foo` component file, we can define the mixins.
-```
+```css
 .screen-width-768px() {
     .foo {color: red;}
 }
