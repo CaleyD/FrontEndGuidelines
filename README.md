@@ -1,6 +1,6 @@
 ﻿# Front End Coding Guidelines
 
-* [Overview](#overview)
+* [Overview](#overview) 
 * [Supported Browsers](#supported-browsers)
 * [HTML](#markup)
 * [CSS](#css)
@@ -8,20 +8,7 @@
 * [Responsive Design](#responsive-design)
 * [Accessibility](#accessibility)
 * [Performance](#performance)
-<<<<<<< HEAD
-    * Create Markup on the Server
-    * Limit Number of Requests
-    * Optimize include order
-    * Embed CSS and JS when appropriate
-    * Tools to test performance
-* [Principles](#principles)
-    * Separation of Content, Style, and Behavior
-    * Consistency
-    * Prefer progressive enhancement to polyfilling
-* [Working With Design](#working-with-design)
-=======
 * [Working With the Design Team](#working-with-the-design-team)
->>>>>>> upstream/master
 * [References](#references)
 
 
@@ -34,22 +21,10 @@ This document's primary motivation is to promote code consistency. By maintainin
 This document outlines the conventions we use at WHS. This is an open document and everything is up for discussion/consideration. We have a tremendous amount of legacy code that does not adhere to these rules, and if you find yourself in one of those files it is in everyone's best interest to refactor it.
 
 These guidelines are not specific to WHS. Our product is not unique enough to warrant deviations from industry standards. Much of this document has been adapted from other front end development guidelines. We're not developing on a separate internet or for a unique browser, so we shouldn't need to invent new standards.
-<<<<<<< HEAD
-
-
-## Supported Browsers
-
-http://foswiki.dev.webmd.com/bin/view.pl/Main/SupportedBrowsers
-
-We do not guarantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features.
-
-IE8 represents ~40% of our traffic today.
-=======
 
 ## Supported Browsers
 
 [Supported Browser List](http://foswiki.dev.webmd.com/bin/view.pl/Main/SupportedBrowsers)
->>>>>>> upstream/master
 
 We do not guarantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features. 
 
@@ -74,10 +49,10 @@ We use the HTML5 Doctype and will use HTML5 features when appropriate.
 ```html
 // target elements on a page that link to pdf documents
 <style>
-	a[href$=".pdf"] {
-		padding-right: 20px;
-		background: url(magic-pdf-icon.png) no-repeat left center;
-	}
+    a[href$=".pdf"] {
+        padding-right: 20px;
+        background: url(magic-pdf-icon.png) no-repeat left center;
+    }
 </style>
 
 <a title="Important pdf" href="important.pdf">Important pdf</a>
@@ -85,45 +60,7 @@ We use the HTML5 Doctype and will use HTML5 features when appropriate.
 
 ### General Markup Guidelines
 
-<<<<<<< HEAD
-### Attributes
-
-#### Quoting Attributes
-
-The HTML5 specification defines quotes around attributes values as optional. For consistency with attributes that accept whitespace, all attributes values should be quoted.
-
-```html
-<p class="line note" data-attribute="106">This is my paragraph of special text.</p>
-```
-
-#### Attribute Names Should Be All Lowercase
-
-Older browsers force all attribute names lowercase. For consistency, always specifiy attributes in lowercase. This is especially important when styling against attributes or retrieving them via javascript.
-
-Interesting note - the jQuery library makes its `$().attr(name)` function case insensitive to patch over this browser inconsistency. jQuery does not solve it for CSS though. If we just understand how browsers work and always specify our attributes in all lowercase then this bit of JavaScript is not needed and a simple, [VanillaJs](http://vanilla-js.com/),  `elem.getAttribute(name)` will always work.
-
-#### Custom Attributes
-
-Custom attributes can help bind data and additional context to HTML elements for use by CSS or JavaScript. Go ahead and add them.
-
-Custom attribute names must start with `data-` and be all lowercase. Instead of camelCasing, smush all words together or seperate each word in the attribute name with a dash.
-
-```html
-<div class="person"
-    data-is-minor="false"
-    data-gender="male">
-    <span class="name">George McFly</span>
-</div>
-```
-
-### Tables
-
-Do use tables for tabular data. Do not use tables for layout.
-
-Make use of `thead`, `tbody`, and `th` tags (and Scope attribute) when appropriate.
-=======
 The following are general guidelines for structuring your HTML markup. Authors are reminded to always use markup which represents the semantics of the content in the document being created.
->>>>>>> upstream/master
 
 * Use actual `p` elements for paragraph delimiters as opposed to multiple `br` tags.
 * Items in list form should always be housed in a `ul`, `ol`, or `dl`, never a set of `div`s or `p`s.
@@ -714,7 +651,7 @@ Always use [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 Automated testing is not optional. You will have to change the way you write JavaScript to make it testable.
 
-		TODO
+        TODO
         QUnit
             Some semantics:
             Unit Tests
@@ -734,35 +671,25 @@ JavaScript should be created using Test Driven Development. We use QUnit as our 
 
 You will soon be able to execute `> build myapp qunit` to create a qunit html file and execute your application's javascript tests from the command line and a CI build.
 
-<<<<<<< HEAD
-#### Coming Soon: Command-line QUnit Test Runner 
-=======
 Test files should be located at `\unittests\web\[ApplicationName]\`. The paths to individual files within `\unittests\web\[ApplicationName]\` should match the locations of the production files under `\production\web\[ApplicaitonName]\`.
->>>>>>> upstream/master
 
 ```
 Production
 |-- Web
-	|-- <Application Name>
-		|-- modulefile.js
+    |-- <Application Name>
+        |-- modulefile.js
 
 UnitTests
 |-- Web
-	|-- <Application Name>
-		|-- config.json (optional)
-		|-- modulefile.tests.js
-		|-- <Application Name>.tests.html (built by cli)
+    |-- <Application Name>
+        |-- config.json (optional)
+        |-- modulefile.tests.js
+        |-- <Application Name>.tests.html (built by cli)
 ```
 
 ### JavaScript Architecture
 
-<<<<<<< HEAD
-Prefer small decoupled modules to large monolithic applications.
-
-### jQuery Usage
-=======
 ### jQuery usage
->>>>>>> upstream/master
 
 Do not default to using jQuery for everything. It is a large library that includes much more functionality than is typically needed. 
 
@@ -794,15 +721,15 @@ Don't use 2 event handlers when 1 will do.
 
 ```html
 <menu id="addingMachine">
-	<button type="button" data-value="1">add 1</button>
-	<button type="button" data-value="2">add 2</button>
-	<!-- 100 more buttons -->
+    <button type="button" data-value="1">add 1</button>
+    <button type="button" data-value="2">add 2</button>
+    <!-- 100 more buttons -->
 </menu>
 
 <script>
 var total = 0;
 dom('#addingMachine').on('click', '[data-value]', function (e) {
-	total += parseInt(dom(e.target).attr('data-value'), 10) || 0;
+    total += parseInt(dom(e.target).attr('data-value'), 10) || 0;
 });
 </script>
 ```
@@ -822,15 +749,15 @@ Define all dependencies, do not access them from global scope within a module. T
 #### Private Module
 
 Use this pattern when:
-	* you don't need to export a JavaScript API to another JavaScript module/file
-	* your unit tests aren't dependent on re-running the IFFE
+    * you don't need to export a JavaScript API to another JavaScript module/file
+    * your unit tests aren't dependent on re-running the IFFE
 
 If you don't need to export or import any functionality wrap it in an [Immediately-Invoked Function Expression](http://benalman.com/news/2010/11/immediately-invoked-function-expression/) to prevent variable name collisions and keep the global namespace clean. 
 
 ```javascript
 (function (document) {
     'use strict';
-	
+    
     var privateVar = true,
         danceparty = document.getElementById('danceparty');
 
@@ -888,7 +815,7 @@ We do not have site-wide breakpoints for "mobile" or "tablet" or "desktop" - let
 
 ### A Lot of Media Queries?
 
-If you find yourself needing a lot of media queries in your CSS, it might be a sign that your layout is too brittle.
+If you find yourself needing a lot of media queries in your layout's CSS, it might be a sign that your layout is too brittle. 
 
 
 ## Accessibility
@@ -911,7 +838,7 @@ This is the list of tests we need to verify to report that we are technically co
 ___this is not needed if the non-text element is just used for styling and has no semantic value___
 * (b) Equivalent alternatives for any multimedia presentation shall be synchronized with the presentation.
 * (c) Web pages shall be designed so that all information conveyed with color is also available without color, for example from context or markup.
-* (d) Documents shall be organized so they are readable without requiring an associated stylesheet.
+* (d) Documents shall be organized so they are readable without requiring an associated style sheet.    
 ___We interpret this to just apply to documents that are not web pages___
 * (e) Redundant text links shall be provided for each active region of a server-side image map.
 ___Just avoid server-side image maps altogether___
@@ -1064,6 +991,5 @@ JavaScript
     
 Progressive Enhancement
 
-	Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
+    Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
 -->
-
