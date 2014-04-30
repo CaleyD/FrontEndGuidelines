@@ -90,7 +90,7 @@ The following are general guidelines for structuring your HTML markup. Authors a
 </table>
 ```
 
-* ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property `text-transform:uppercase/lowercase`.
+* Always use title-case for headers and titles. Do not use all caps or all lowercase titles in markup, instead apply the CSS property `text-transform:uppercase/lowercase`.
 
 #### Quoting Attributes
 
@@ -112,7 +112,7 @@ The second component of a web page is the presentation information contained in 
 
 Just as the information on a web page is semantically described in the HTML Markup, CSS describes all presentation aspects of the page via a description of its visual properties. CSS is powerful in that these properties are mixed and matched via identifiers to control the page's layout and visual characteristics through the layering of style rules (the "cascade").
 
-We use the [.LESS CSS preprocessor](www.dotlesscss.org) to aid our CSS generation. Care should be taken when writing css .LESS makes it easy to nest selectors that compile into long selectors. Long selectors chains can cause file bloat, selector precedence problems, adversely affect problems and make css harder to maintain and edit.
+We use the [.LESS CSS preprocessor](http://www.dotlesscss.org) to aid our CSS generation. Care should be taken when writing css .LESS makes it easy to nest selectors that compile into long selectors. Long selectors chains can cause file bloat, selector precedence problems, adversely affect problems and make css harder to maintain and edit.
 
 __Rule of thumb__
 
@@ -123,11 +123,7 @@ __Rule of thumb__
 
 Get to know [CSS Selectors](http://www.w3.org/TR/css3-selectors/#selectors).
 
-SMACSS, OOCSS
-
-Embrace CSS3 to progressively enhance styles for newer browsers
-
-In 2012 we got rid of rounded corners for <IE9 throughout the site. We didn't hear any client complaints.
+Embrace CSS3 to progressively enhance styles for newer browsers.
 
 We aren't all CSS experts, reach out to one of our many knowledgable CSS devs before hacking together a solution in JavaScript.
 
@@ -136,12 +132,12 @@ We aren't all CSS experts, reach out to one of our many knowledgable CSS devs be
 You should include exactly __one__ stylesheet on your page and no more. This base file should then import all dependancies and components. Components and styles for different sections should be contained in their own stylesheet and should not cross-pollinate. The home page styles directory, for example, contains the files 
 
 ```
-homepage styles
+styles
 |-- homepage.less
-|-- layout.less
-|-- featuredNews.less
-|-- featuredVideo.less
-|-- promoWeblets.less
+|-- _layout.less
+|-- _featuredNews.less
+|-- _featuredVideo.less
+|-- _promoWeblets.less
 ```
 
 `homepage.less` is included on the page and imports the different files for each section like this:
@@ -168,6 +164,18 @@ __*Modules*__ are more specialized components like modals, tab panels, and progr
 
 There is one more piece of the Pattern Library that contains legacy/deprecated components, and you should stay away from it unless you're Obelisk.
 
+#### BEM, OOCSS
+[BEM](http://bem.info/method/definitions/) is an object-oriented methodology for organizing resuable blocks of mark-up and CSS. Many of our pattern library components are being ported to BEM. It allows us to rapidly prototype and redesign components because they are not coupled to each other.
+
+``
+.block {}
+.block__element {}
+.block--modifier {}
+
+``
+
+BEM is very easy to wrap your head around, and has helped reduce CSS bloat casued by nesting, overrides, and repetitive mixins. We reccomend you adopt this convention when building applications. [Get to know BEM syntax](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/).
+
 ### Theme Variables
 
 Use common variables for things like colors and gutters. This way clients can override variables with their branding colors and fonts if need be. All global variables can all be located in `themes_common.less`, but the ones we recommend using are in the Pattern Library.
@@ -176,9 +184,9 @@ Here's a good example of how to use theme variables wisely.
 
 ```css
 .class {
-    color: @themePrimary;
-    background: @matteShading;
-    border: 1px solid @borderShade;
+    color: @brand_Primary;
+    background: @gray_Lighter;
+    border: 1px solid @gray_Light;
 }
 ```
 
@@ -199,16 +207,11 @@ Class and ID names should be `camelCase`
 #theIdName {...}
 ```
 
-State rules added via Javascript should us hyphens between words
-
-```css
-.is-visible {...}
-```
-
 HTML elements should be lowercase, of course. That said, avoid styling naked tags.
 
 ```css
-div, span {...}
+div {...}
+span {...}
 ```
 
 Put a space between selector and opening bracket and put the closing bracket on a separate, non-indented line
@@ -271,7 +274,7 @@ Use [LESS functions](http://lesscss.org/#reference) to adjust hue, saturation, l
 
 ```css
 color: fade(#000, 50%);
-background: darken(#FFF, 50%);
+background: mix(#FFF, #000, 50%);
 ```
 
 Strings must use single-quotes
@@ -802,21 +805,59 @@ define("InterstitialModal", ["minQ", "InterstitialModal"], function($, dependenc
 
 NOTE: we used to use the revealing module pattern for this. It was not as testable as AMD modules due to the non-reinitialized state that can be captured in the IFFE and cause conflicts between unit test runs. The AMD pattern also simplifies namespace creation, provides better documentation, and reduces file-include-order dependencies.
 
-
 ## Responsive Design
 
-There is no mobile web, there is no `http://m.webmdhealth.com` site, all functionality should be available to all of our supported browsers/devices provided by the same 
+There is no mobile web, there is no `http://m.webmdhealth.com` site, all functionality should be available to all of our supported browsers/devices provided by the same HTML/CSS/JavaScript.
 
-HTML/CSS/JavaScript.
+For browsers that support CSS media queries, our pages should render and look/work well at any resolution from 320px to 1024px+.
 
-For browsers that support CSS media queries, our pages should render and look/work well at any resolution from 320px to 997px+.
-
-We do not have site-wide breakpoints for "mobile" or "tablet" or "desktop" - let the content and layout on individual pages drive the layout decisions.
+We do not reccommend site-wide breakpoints for "mobile" or "tablet" or "desktop" - let the content and layout on individual pages drive the layout decisions.
 
 ### A Lot of Media Queries?
 
 If you find yourself needing a lot of media queries in your layout's CSS, it might be a sign that your layout is too brittle. 
 
+### Organzizing media queries
+
+Most of our core applications have LESS files broken up into small modules and components, concatenated into one LESS file. The responsive portion of the application is usually treated as one of the components, separated into a `responsive.less` file. This makes the responsive file fairly obtuse, with components mixed together. Debugging requires a more ctrl+f and dev tool hunting than I'd like. Wouldn't it be nice if the component's responsive bits were with the rest of the styles?
+
+This is how we'd typically organize a `responsive.less`. Pretend `.foo` and `.bar` are two unrelated pieces of your app.
+
+```
+@media screen and (max-width: 768px) {
+    .foo {color: red;}
+    .bar {color: blue;}
+}
+
+@media screen and (max-width: 550px) {
+    .foo {color: green;}
+    .bar {color: yellow;}
+}
+```
+We can greatly simplify that file by calling some mixins.
+```
+@media screen and (max-width: 768px) {
+    .screen-width-768px();
+}
+
+@media screen and (max-width: 768px) {
+    .screen-width-550px();
+}
+```
+...and now at the bottom of our `.foo` component file, we can define the mixins.
+```
+.screen-width-768px() {
+    .foo {color: red;}
+}
+
+.screen-width-550px() {
+    .foo {color: green;}
+}
+```
+
+Ditto with our `.bar` file. This is better than defining a new media query in every component file. LESS is smart enough to combine mixins when you define them in more than one place, but it is *not* smart enough to combine media queries. 
+
+There are some caveats. If someone calls `.screen-width-xxx()` in their app and it is already in use someplace common, the nav for example, they would be duplicating styles by calling the mixin twice. We should be careful about this when using common breakpoints and namespacing application specific mixins.
 
 ## Accessibility
 
