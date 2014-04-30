@@ -1,60 +1,14 @@
-# Front End Coding Guidelines
-
-## Contents
+﻿# Front End Coding Guidelines
 
 * [Overview](#overview)
 * [Supported Browsers](#supported-browsers)
-* [HTML](#html)
-    * [HTML5](#html5)
-    * [Write Semantic Markup](#write-semantic-markup)
-    * [Tables](#tables)
-    * [Attributes](#attributes)
-    * [General Markup Guidelines]
+* [HTML](#markup)
 * [CSS](#css)
-    * [Organization](#organization)
-    * [Pattern Libary](#pattern-library)
-    * [Themes](#themes)
-    * [Style Guide](#style-guide)
-        * [Indentation](#indentation)
-        * [Selectors](#selectors)
-        * [Properties](#properties)
-        * [Variables](#variables)
-        * [Mixins](#mixins)
-    * [Cross Browser Support]
-    * [CSS3]
-        * progressive enhancement
-    * [Animations]
-    * [Stay Rad](#stay-rad)
 * [JavaScript](#javascript)
-    * [Unit testing](#unit-testing)
-    * [Code Quality](#code-quality)
-    * [Formatting](#javascript-formatting)
-        * [Indentation](#indentation)
-        * [Statement Termination](#statement-termination)
-        * [Line Length](#line-length)
-        * [Blank Lines](#blank-lines)
-        * [Naming](#naming)
-        * [Equality Operators](#equality-operators)
-        * [Ternary Operator](#ternary-operator)
-        * [Compound Statements](#compound-statements)
-        * [White Space](#white-space)
-    * [JsHint](#jshint)
-    * [Write Modular Code](#write-modular-code)
-        * [Private module](#private-module)
-        * [Module with Public API](#module-with-public-api)
-        * [Making a module testable](#making-a-module-testable)
-        * AMD
-    * [Declaring Variables](#declaring-variables)
-    * Animate and Style with CSS, not JavaScript
-    * Manage State, Not Style
-    * Use delegated events
-    * Third-party libraries and plugins
 * [Responsive Design](#responsive-design)
 * [Accessibility](#accessibility)
-    * Standards Compliance
-    * Simple Markup
-    * WAI-ARIA
 * [Performance](#performance)
+<<<<<<< HEAD
     * Create Markup on the Server
     * Limit Number of Requests
     * Optimize include order
@@ -65,17 +19,22 @@
     * Consistency
     * Prefer progressive enhancement to polyfilling
 * [Working With Design](#working-with-design)
+=======
+* [Working With the Design Team](#working-with-the-design-team)
+>>>>>>> upstream/master
 * [References](#references)
+
 
 ## Overview
 
-This document contains guidelines for web applications built by WHS. It is to be readily available to anyone who wishes to check the iterative progress of our best practices.
+This document contains guidelines for web applications built by WHS. It is available to anyone who wishes to check or contribute our best practices.
 
-This document's primary motivation is two-fold: 1) code consistency and 2) best practices. By maintaining consistency in coding styles and conventions, we can ease the burden of legacy code maintenance, and mitigate risk of breakage in the future. By adhering to best practices, we ensure a consistent user experience, optimized page loading, and maintainable code.
+This document's primary motivation is to promote code consistency. By maintaining consistency in coding styles and conventions, we can ease the burden of legacy code maintenance, and mitigate risk of breakage in the future. By adhering to best practices, we ensure a consistent user experience, optimized page loading, and maintainable code.
 
 This document outlines the conventions we use at WHS. This is an open document and everything is up for discussion/consideration. We have a tremendous amount of legacy code that does not adhere to these rules, and if you find yourself in one of those files it is in everyone's best interest to refactor it.
 
 These guidelines are not specific to WHS. Our product is not unique enough to warrant deviations from industry standards. Much of this document has been adapted from other front end development guidelines. We're not developing on a separate internet or for a unique browser, so we shouldn't need to invent new standards.
+<<<<<<< HEAD
 
 
 ## Supported Browsers
@@ -85,54 +44,48 @@ http://foswiki.dev.webmd.com/bin/view.pl/Main/SupportedBrowsers
 We do not guarantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features.
 
 IE8 represents ~40% of our traffic today.
+=======
 
+## Supported Browsers
+
+[Supported Browser List](http://foswiki.dev.webmd.com/bin/view.pl/Main/SupportedBrowsers)
+>>>>>>> upstream/master
+
+We do not guarantee that all functionality will work the same between browsers. In fact, with responsive design, we intentionally change layout and style for different browsers. Users need to be able to accomplish the same tasks with all of our supported browsers, but the mechanisms are free to change based on browser features. 
 
 ## HTML
-
-The first component of any web page is the tag-based markup language of HTML. The Hyper Text Markup Language (HTML) has a sordid history but has come into its own in the last few years. After a lengthy experimentation with the XML-based XHTML variant the industry has accepted that HTML is the future of the web.
 
 Markup defines the structure and outline of a document. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style sheets.
 
 * Defines content
-* Establishes Information Heirarchy
+* Establishes Information Hierarchy
 * Adds semantic context to content
-
-We will test our markup against the [W3C validator](http://validator.w3.org/#validate_by_input), to ensure that the markup is well formed. 100% valid code is not a goal, but validation certainly helps to write more maintainable sites as well as debugging code. We do not guarantee code is 100% valid, but instead assures the cross-browser experience is fairly consistent.
 
 ### HTML5
 
-HTML5 is a new version of HTML and XHTML. The HTML5 draft specification defines a single language that can be written in HTML and XML. It attempts to solve issues found in previous iterations of HTML and addresses the needs of web applications, an area previously not adequately covered by HTML. (source).
+HTML5 is a new version of HTML and XHTML. The HTML5 draft specification defines a single language that can be written in HTML and XML. It attempts to solve issues found in previous iterations of HTML and addresses the needs of web applications, an area previously not adequately covered by HTML4. [source](http://www.w3.org/TR/html5-diff/#history).
 
 We use the HTML5 Doctype and will use HTML5 features when appropriate.
 
-#### Use HTML5 input[type=XXXX]
+#### Use Attribute Selectors
 
-
-### Write Semantic Markup
-
-Writing websites with clean, semantic HTML is something we wish we could always do. Sometimes we find ourselves limited by the way pages were setup by our predecessors, or sometimes we're coding an HTML email. The validity of the HTML should never be compromised, even if to solve a browser specific bug.
-
-Headings should be heirarchically created from `<h2>` onwards, paragraphs should always be in `<p>` tags and so on and so forth. If you write semantic HTML, the resultant page will be cleaner, lighter and more easily styled.
-
-WHICH DO YOU THINK LOOKS CLEANER, THIS?:
+[Attribute Selectors](http://www.w3.org/TR/css3-selectors/#selectors) are magic and can be used to target elements without adding a class or ID.
 
 ```html
-<span class="sectionHeading">A Heading</span>
-<br /> <br />
-Lorem ipsum dolor sit amet. ...
-<br /> <br />
+// target elements on a page that link to pdf documents
+<style>
+	a[href$=".pdf"] {
+		padding-right: 20px;
+		background: url(magic-pdf-icon.png) no-repeat left center;
+	}
+</style>
+
+<a title="Important pdf" href="important.pdf">Important pdf</a>
 ```
 
-OR THIS?
+### General Markup Guidelines
 
-```html
-<h2>A Heading</h2>
-<p>
-    Lorem ipsum dolor sit amet. ...
-</p>
-```
-
-
+<<<<<<< HEAD
 ### Attributes
 
 #### Quoting Attributes
@@ -168,19 +121,31 @@ Custom attribute names must start with `data-` and be all lowercase. Instead of 
 Do use tables for tabular data. Do not use tables for layout.
 
 Make use of `thead`, `tbody`, and `th` tags (and Scope attribute) when appropriate.
+=======
+The following are general guidelines for structuring your HTML markup. Authors are reminded to always use markup which represents the semantics of the content in the document being created.
+>>>>>>> upstream/master
 
-Table markup with proper syntax (`thead`, `tbody`, `th [scope]`):
+* Use actual `p` elements for paragraph delimiters as opposed to multiple `br` tags.
+* Items in list form should always be housed in a `ul`, `ol`, or `dl`, never a set of `div`s or `p`s.
+* Use label fields to label each form field. Either wrap the input field with a label tag or use the label's `for` attribute to associate itself with the input field, so users can click the labels.
+* NEVER use tables for layout.
+* Use [Microformats](http://microformats.org/) and/or [Microdata](http://en.wikipedia.org/wiki/Microdata_(HTML)) where appropriate, specifically hCard and adr.
+* Make use of `dl` (definition lists) and `blockquote`, when appropriate.
+* Make use of `thead`, `tbody`, and `th` tags (and Scope attribute) when appropriate.
+* Table markup with proper syntax (`thead`, `tbody`, `th [scope]`)
 
 ```html
 <table>
     <thead>
         <tr>
-            <th scope="col">Table header 1</th>
-            <th scope="col">Table header 2</th>
+            <th>Table header 0</th>
+            <th>Table header 1</th>
+            <th>Table header 2</th>
         </tr>
     </thead>
     <tbody>
         <tr>
+            <th scope="row">Row header</th>
             <td>Table data 1</td>
             <td>Table data 2</td>
         </tr>
@@ -188,55 +153,59 @@ Table markup with proper syntax (`thead`, `tbody`, `th [scope]`):
 </table>
 ```
 
+* ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property `text-transform:uppercase/lowercase`.
 
-### Forms
+#### Quoting Attributes
 
+The HTML5 specification defines quotes around attributes values as optional. For consistency with attributes that accept whitespace, all attributes values should be quoted.
 
-* Use label fields to label each form field, the `for` attribute should associate itself with the input field, so users can click the labels.
-
-### General Markup Guidelines
-
-The following are general guidelines for structuring your HTML markup. Authors are reminded to always use markup which represents the semantics of the content in the document being created.
-
-* Use actual `p` elements for paragraph delimiters as opposed to multiple `br` tags.
-
-* Make use of `dl` (definition lists) and `blockquote`, when appropriate.
-* Items in list form should always be housed in a `ul`, `ol`, or `dl`, never a set of `div`s or `p`s.
-
-* Use microformats and/or Microdata where appropriate, specifically hCard and adr.
-* ?Always use title-case for headers and titles.? Do not use all caps or all lowercase titles in markup, instead apply the CSS property text-transform:uppercase/lowercase.
-
+```html
+<p class="line note" data-attribute="106">This is my paragraph of special text.</p>
+```
 
 ## CSS
 
-The second component of a web page is the presentation information contained in the Cascading Style Sheet (CSS.) Web browsers successful implementation of CSS has given web authors site-wide control over the look and feel of their web sites.
+* [Organization](#organization)
+* [Pattern Library](#pattern-library)
+* [Themes](#themes)
+* [Code Formatting](#css-code-formatting)
+* [Stay Rad](#stay-rad)
+
+The second component of a web page is the presentation information contained in the Cascading Style Sheet (CSS). Web browsers successful implementation of CSS has given web authors site-wide control over the look and feel of their web sites.
 
 Just as the information on a web page is semantically described in the HTML Markup, CSS describes all presentation aspects of the page via a description of its visual properties. CSS is powerful in that these properties are mixed and matched via identifiers to control the page's layout and visual characteristics through the layering of style rules (the "cascade").
 
-We use the [.LESS CSS preprocessor](http.dotlesscss.org) to allow us to theme our CSS.
+We use the [.LESS CSS preprocessor](www.dotlesscss.org) to aid our CSS generation. Care should be taken when writing css .LESS makes it easy to nest selectors that compile into long selectors. Long selectors chains can cause file bloat, selector precedence problems, adversely affect problems and make css harder to maintain and edit.
 
+__Rule of thumb__
 
-    .LESS makes it easy to nest selectors that compile into long selectors
-        files size bloat
-        performance
-        maintainability (selector wars!)
+* Avoid creating selectors with more than 2 spaces in them
+* Avoid !important
 
-        Rule of thumb 
-            avoid creating selectors with more than 2 spaces in them
+`!important` is a sign that we have a selector war and other selectors have too high of specificity, try to refactor the css instead of adding `!important`.
 
-    Avoid !important
-        It is a sign that we have a selector war and other selectors have too high of specificity
+Get to know [CSS Selectors](http://www.w3.org/TR/css3-selectors/#selectors).
 
-    SMACSS, OOCSS
-    Embrace CSS3 to progressively enhance styles for newer browsers
-    In 2012 we got rid of rounded corners for <IE9 throughout the site.
-        We didn't hear any client complaints.
-    We aren't all CSS experts, reach out to one of our many knowledgable CSS devs before hacking together a solution in JavaScript.
+SMACSS, OOCSS
 
+Embrace CSS3 to progressively enhance styles for newer browsers
+
+In 2012 we got rid of rounded corners for <IE9 throughout the site. We didn't hear any client complaints.
+
+We aren't all CSS experts, reach out to one of our many knowledgable CSS devs before hacking together a solution in JavaScript.
 
 ### Organization
 
-You should include exactly __one__ stylesheet on your page and no more. This base file should then import all dependancies and components. Components and styles for different sections should be contained in their own stylesheet and should not cross-pollinate. The home page styles directory, for example, contains the files `homepage.less` `layout.less` `featuredNews.less` `featuredVideo.less` `promoWeblets.less`
+You should include exactly __one__ stylesheet on your page and no more. This base file should then import all dependancies and components. Components and styles for different sections should be contained in their own stylesheet and should not cross-pollinate. The home page styles directory, for example, contains the files 
+
+```
+homepage styles
+|-- homepage.less
+|-- layout.less
+|-- featuredNews.less
+|-- featuredVideo.less
+|-- promoWeblets.less
+```
 
 `homepage.less` is included on the page and imports the different files for each section like this:
 
@@ -260,7 +229,7 @@ __*Components*__ describe define things like forms, buttons, tables, sprites, gr
 
 __*Modules*__ are more specialized components like modals, tab panels, and progress bars. Since these components are used infrequently and tend to be more customizable they live here.
 
-There is one more piece of the Pattern Library that contains legacy/deprectaed components, and you should stay away from it unless you're Obelisk.
+There is one more piece of the Pattern Library that contains legacy/deprecated components, and you should stay away from it unless you're Obelisk.
 
 ### Theme Variables
 
@@ -276,7 +245,7 @@ Here's a good example of how to use theme variables wisely.
 }
 ```
 
-### Style Guide
+### CSS Code Formatting
 
 We want to make sure our LESS looks familiar to everyone editing it. That's why these guidelines are not simply suggestions, but the *de facto* style you should be coding. The Front-End Community of Practice decides on the style based on our standards. Don't get busted by the COPs.
 
@@ -286,20 +255,6 @@ Indent four spaces, no tabs
 
 #### Selectors
 
-Get to know CSS Selectors
-* > (direct child)
-* + (adjacents sibling)
-* ~ (general siblings)
-* [attr] (element has attribute defined)
-* [attr=xxx] (element has attribute with specified value)
-* [attr*=xxx]
-* [attr^=xxx]
-* [attr$=xxx]
-* [data-*]
-* [foo~=xxx]
-* :checked, :before, :after, :not(), etc...
-* Maybe Link to this...(http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/)
-
 Class and ID names should be `camelCase`
 
 ```css
@@ -307,7 +262,7 @@ Class and ID names should be `camelCase`
 #theIdName {...}
 ```
 
-State rules added via Javascript should use hyphens between words
+State rules added via Javascript should us hyphens between words
 
 ```css
 .is-visible {...}
@@ -375,7 +330,7 @@ Specify HEX values for colors
 #FF0138
 ```
 
-Use LESS functions to adjust hue, saturation, lightness, or transparency
+Use [LESS functions](http://lesscss.org/#reference) to adjust hue, saturation, lightness, or transparency
 
 ```css
 color: fade(#000, 50%);
@@ -390,7 +345,7 @@ a:after {
 }
 ```
 
-CSS3 properties that support layering should on separate lines, with the semi-colon on the last line
+CSS3 properties that support layering should be on separate lines, with the semi-colon on the last line
 
 ```css
 .class {
@@ -403,7 +358,7 @@ CSS3 properties that support layering should on separate lines, with the semi-co
 
 #### Variables
 
-Variables are declared with `@`
+In LESS, variables are declared with `@` preceding the name.
 
 ```css
 @themeColor: #F00;
@@ -516,11 +471,6 @@ div {
 
 __Make sure you're not redefining mixins that exist globally! Check components > common.less__
 
-### Limit Selector Specificity
-
-Avoid creating overly-specific CSS selectors.
-
-[CSS Specificity Wars](http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html)
 
 ### Stay Rad
 
@@ -540,15 +490,48 @@ Avoid creating overly-specific CSS selectors.
 
 ## Javascript
 
-JavaScript is a last resort. Do not use JavaScript to style the page. 
+* [Unit testing](#unit-tests)
+* [Code Formatting](#javascript-formatting)
+* [JsHint](#jshint)
+* [Write Modular Code](#write-modular-code)
+    
+JavaScript can be added to augment existing functionality on a page. JavaScript is a last resort. Do not use JavaScript to style the page. 
 
 Do not rely on JavaScript to render the initial page contents. [Read about Twitter's dropping hash urls](https://blog.twitter.com/2012/improving-performance-twittercom)
 
-### Formatting (#javascript-formatting)
+### Formatting
 
 #### Indentation
 
-Indent a tab, do not mix spaces and tabs.
+Indent with a tab, do not mix spaces and tabs.
+
+
+#### Declaring variables
+
+Declare variables at the beginning of their scope in a single statement. Declaring variables in a single statement performs faster than spreading them around, minifies better, makes them easier to find, and reduces [hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting) errors.
+
+```javascript
+(function (){
+    'use strict';
+    // declare module wide variables at the beginning of module scope in a single statement
+    var moduleA = 4,
+        moduleB = 5;
+
+    function aFunc (msg) {
+        // declare local variables at the beginning of function scope
+        var standardGreeting = 'Hello';
+
+        if (!!msg) {
+            return standardGreeting + ' A: ' + moduleA;
+        } else {
+            return msg + 'B: ' + moduleB;
+        }
+    }
+
+    alert(aFunc()); // Hello A: 4
+    alert(aFunc('ohai!')); // ohai! B: 5
+})();
+```
 
 #### Statement Termination
 
@@ -570,40 +553,6 @@ var UI_MESSAGE = stringBegin + option[1] + option[3] + stringMiddle +
                  stringEnder;
 ```
 
-#### Blank Lines
-
-Use blank lines to separate related lines of code from unrelated lines of code. It's a good idea to add blank lines:
-
-* before control statements
-* between methods
-* between the local variables in a method and the first statement
-* before a comment
-* between logical sections inside a method to improve readability
-
-```javascript
-var len,
-    p,
-    i = 0;
-
-if (1 && !0) {
-
-    for (len = items.length; i < l; ++i) {
-        p = items[i];
-
-        if (p.nodeType === 1) {
-
-            if (p.nodeName === 'A') {
-                p.href = '#';
-            } else {
-
-                // kill the child
-                p.parentNode.removeChild(p);
-            }
-        }
-    }
-}
-```
-
 #### Naming
 
 Use camel case for variables and regular functions, pascal case for constructors and all caps to indicate a constant. Variables and constructors should begin with a noun and regular functions should begin with a verb.
@@ -614,7 +563,7 @@ function MoneyMaker(amount) {
 
     this.money = amount || 1;
     this.addMoney = function (amount) {
-        return this.money += amount;
+        return this.money += amount + ' ' + UI_UNIT;
     };
 }
 
@@ -627,7 +576,7 @@ piggyBank.addMoney(1);
 Use `===` and `!==` instead of `==` and `!=` to avoid type coercion.
 
 ```javascript
-var isSame = (a === b);
+var same = (a === b);
 ```
 
 #### Ternary Operator
@@ -682,24 +631,19 @@ var i,
 for (i = 0, len = 10; i < 10; i++) {
     // ...
 }
-
-var prop;
-
-for (prop in someObject) {
-    // ...
-}
 ```
 
 #### White Space
 
 Blank lines improve readability by setting off sections of code that are logically related.
 
-Always put a blank line
+It's a good idea to add blank lines:
 
 * between methods
 * between local variables and the next statement
 * before comments
 * before control statements e.g. `if`, `for`, `while` etc.
+* between logical sections inside a method to improve readability
 
 ```javascript
 (function() {
@@ -729,40 +673,12 @@ Always put a blank line
 })();
 ```
 
-### Declaring variables
-
-Declare variables at the beginning of their scope in a single statement. Declaring variables in a single statement performs faster than spreading them around, minifies better, makes them easier to find, and reduces [hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting) errors.
-
-```javascript
-(function (){
-    'use strict';
-    // declare module wide variables at the beginning of module scope in a single statement
-    var moduleA = 4,
-        moduleB = 5;
-
-    function aFunc (msg) {
-        // declare local variables at the beginning of function scope
-        var standardGreeting = 'Hello';
-
-        if (!!msg) {
-            return standardGreeting + ' A: ' + moduleA;
-        } else {
-            return msg + 'B: ' + moduleB;
-        }
-    }
-
-    alert(aFunc()); // Hello A: 4
-    alert(aFunc('ohai!')); // ohai! B: 5
-})();
-```
-
-
 ### JsHint
 
 We use jsHint to enforce a consistent coding style and to help prevent JavaScript errors.
-There are jsHint plugins for Visual Studio (http://blog.stevensanderson.com/2012/08/17/using-jshint-inside-visual-studio-the-basics/) and Sublime.
+[Using JsHint inside Visual Studio - the basics](http://blog.stevensanderson.com/2012/08/17/using-jshint-inside-visual-studio-the-basics/)
 
-make sure your code passes [JsHint](http://jshint.com/). If you must include code that doesn't pass the JsHint check add a [directive](http://jshint.com/docs/#directives) to make it pass.
+make sure your code passes [JsHint](http://jshint.com/). If you must include code that doesn't pass add a [directive](http://jshint.com/docs/#directives) to make it pass.
 
 ```javascript
 /*global jQuery*/ // jshint option: to declare jQuery a valid global
@@ -794,73 +710,108 @@ Always use [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 })();
 ```
 
-
 ### Unit Tests
 
-___Automated testing is not optional___. You will have to change the way you write JavaScript to make it testable.
+Automated testing is not optional. You will have to change the way you write JavaScript to make it testable.
 
-JavaScript should be created using Test Driven Development. We use [QUnit](http://qunitjs.com/) as our testing framework. We have had a few iterations of unit test patterns. You will see these in the codebase. Model your new tests off of the Health Concierge project.
+		TODO
+        QUnit
+            Some semantics:
+            Unit Tests
+                self contained
+                targetted
+                any markup to test against is embedded in test js file
+                not dependent on CSS files
+                Will be included in CI build
+            Integration Tests
+                may depend on production markup created by executing controls
+        build appTarget qunit
+            generates qunit.html file to run tests
 
-Test files should be located at `\unittests\web\[ApplicationName]\`. The paths to individual files within here should match the locations of the production files under `\production\web\[ApplicaitonName]\`.
+JavaScript should be created using Test Driven Development. We use QUnit as our testing framework. We have had a few iterations of unit test patterns. You will see these in the codebase. Model your new tests off of the Health Concierge project.
 
-    QUnit
-    Some semantics:
-        Unit Tests
-            self contained
-            targetted
-            any markup to test against is embedded in test js file
-            not dependent on CSS files
-            Will be included in CI build
-        Integration Tests
-            may depend on production markup created by executing controls
-
-
-#### Coming Soon: Command-line QUnit Test Runner 
+#### Command-line QUnit test runner coming soon
 
 You will soon be able to execute `> build myapp qunit` to create a qunit html file and execute your application's javascript tests from the command line and a CI build.
 
-generates qunit.html file to run tests
+<<<<<<< HEAD
+#### Coming Soon: Command-line QUnit Test Runner 
+=======
+Test files should be located at `\unittests\web\[ApplicationName]\`. The paths to individual files within `\unittests\web\[ApplicationName]\` should match the locations of the production files under `\production\web\[ApplicaitonName]\`.
+>>>>>>> upstream/master
+
+```
+Production
+|-- Web
+	|-- <Application Name>
+		|-- modulefile.js
+
+UnitTests
+|-- Web
+	|-- <Application Name>
+		|-- config.json (optional)
+		|-- modulefile.tests.js
+		|-- <Application Name>.tests.html (built by cli)
+```
 
 ### JavaScript Architecture
 
+<<<<<<< HEAD
 Prefer small decoupled modules to large monolithic applications.
 
 ### jQuery Usage
+=======
+### jQuery usage
+>>>>>>> upstream/master
 
 Do not default to using jQuery for everything. It is a large library that includes much more functionality than is typically needed. 
 
 jQuery promotes some no-so-great practices. These should be avoided:
-
 * `$(document).ready(function(){...})` instead just put your scripts at the bottom of the markup and don't depend on CSS.
+* setting style with jQuery
 
-### Manage State Not Style
+    These are just as bad as setting inline styles in HTML:
 
-Setting styles with JavaScript is a no-no.
+    * `$('.item').hide('slow')` - this effectively sets an inline style of `display:none`
+    * `$('.item').show('fast')`
+    * `$('.item').toggle()`
+    * `$('.item').css({color: 'red'})` - this effectively sets an inline style of `color:red`
 
-These are just as bad as setting inline styles in HTML:
-* `$('.item').hide('slow')`
-* `$('.item').show('fast')`
-* `$('.item').toggle()`
-* `$('.item').css({color: 'red'})`
+    Prefer
 
-Prefer these:
-* `$('.item').removeClass('is-visible')`
-* `$('.item').addClass('is-visible')`
-* `$('.item').toggleClass('is-visible')`
-* `$('.item').addClass('is-error')`
+    * `$('.item').removeClass('is-visible')`
+    * `$('.item').addClass('is-visible')`
+    * `$('.item').toggleClass('is-visible')`
+    * `$('.item').addClass('is-error')`
 
 And ___move styling and animation decisions to CSS, where they belong___.
 
-[Updating styles via class name rather than setting styles from script is also faster](http://jsperf.com/change-class-vs-inline-styling/5)
+Updating styles via class name rather than setting styles from script is also [faster](http://jsperf.com/change-class-vs-inline-styling/5)
 
 ### Delegated Event Handlers
 
+Don't use 2 event handlers when 1 will do.
 
+```html
+<menu id="addingMachine">
+	<button type="button" data-value="1">add 1</button>
+	<button type="button" data-value="2">add 2</button>
+	<!-- 100 more buttons -->
+</menu>
+
+<script>
+var total = 0;
+dom('#addingMachine').on('click', '[data-value]', function (e) {
+	total += parseInt(dom(e.target).attr('data-value'), 10) || 0;
+});
+</script>
+```
 
 ### Write Modular Code
 
-Why modules?
+Prefer small, decoupled, independent, and cohesive modules of functionality over big architectures.
 
+Why modules?
     
 > Now that we're delivering page content faster, the next step is to ensure that our JavaScript is loaded and the application is interactive as soon as possible. To do that, we need to minimize the amount of JavaScript we use: smaller payload over the wire, fewer lines of code to parse, faster to execute. To make sure we only download the JavaScript necessary for the page to work, we needed to get a firm grip on our dependencies.
 >
@@ -870,11 +821,16 @@ Define all dependencies, do not access them from global scope within a module. T
 
 #### Private Module
 
-If you don't need to export any functionality wrap it in an [Immediately-Invoked Function Expression](http://benalman.com/news/2010/11/immediately-invoked-function-expression/) to prevent variable name collisions and keep the global namespace clean. 
+Use this pattern when:
+	* you don't need to export a JavaScript API to another JavaScript module/file
+	* your unit tests aren't dependent on re-running the IFFE
+
+If you don't need to export or import any functionality wrap it in an [Immediately-Invoked Function Expression](http://benalman.com/news/2010/11/immediately-invoked-function-expression/) to prevent variable name collisions and keep the global namespace clean. 
 
 ```javascript
 (function (document) {
     'use strict';
+	
     var privateVar = true,
         danceparty = document.getElementById('danceparty');
 
@@ -886,18 +842,21 @@ If you don't need to export any functionality wrap it in an [Immediately-Invoked
 
 #### Module with Public API
 
-If you need to add functionality to an existing global namespace/module.
+Use this pattern if you must create an API that other JavaScript code will call into. 
+
+We use the AMD pattern for modularization. 
+
+We use a custom-built implementation of the AMD loader that reinitializes all module constructors for each QUnit test - this enables us to isolate test runs and prevent state leakage between multiple QUnit tests.
 
 ```javascript
 // explicitly assign your module to window property
-var NameSpace = (function (nameSpace) {
+define("InterstitialModal", ["minQ", "InterstitialModal"], function($, dependency2) {
     'use strict';
 
     // setup
-    var privateCount = 0;
+    var privateCount = 0
 
-    // Add a counter sub-module to object
-    nameSpace.counter = {
+    return {
         count: function () {
             return privateCount;
         },
@@ -909,72 +868,23 @@ var NameSpace = (function (nameSpace) {
         decrement: function () {
             return --privateCount;
         }
-    };
-
-    return nameSpace; // return augmented object
-})(NameSpace || {}); // if namespace object isn't defined yet create it
-```
-
-#### Making a module testable
-
-We use QUnit, so if QUnit is on the window, expose your normally private methods for testing. Optionally don't run our normal initialization method.
-
-```javascript
-var myModule = (function (myModule) {
-    'use strict';
-    var initialize = function () {
-        // initialize
-    };
-
-    myModule.publicMethod = function () {
-        //...
-    };
-
-    if (!window.QUnit) {
-        // initialize as normal if no QUnit
-        initialize();
-    } else {
-        // expose normally private functions for testing if needed
-        myModule.initialize = initialize;
     }
+});
 
-    return myModule;
-})(myModule || {});
 ```
 
-#### TODO
-
-JavaScript
-
-    For new pages, include script references at the bottom of the markup
-        improves performance - *performance link*
-        simplifies code - no longer need $(document).ready event in most cases
-    Understand scoping and closures
-    Understand browser dom api
-    Use JS to manage state, not style
-        
-    Modular
-        AMD
-        Prefer small, decoupled, independent, and cohesive modules of functionality over connected architecture
-    Do not pollute the global namespace
-        Global objects are bad, avoid them.
-    Prefer scripts that do not expose any global api
-        When that isn't possible, create as small of an API as possible
-        Changing an existing JavaScript API is expensive
-        JS maintainance is hard, we don't have a compiler to enforce correctness like C#
-    
-    Do not reach for a third-party library as a first solution
-    Do not use jQuery for everything
-        Our proliferation of dependencies on jQuery have prevented us from updating versions since
+NOTE: we used to use the revealing module pattern for this. It was not as testable as AMD modules due to the non-reinitialized state that can be captured in the IFFE and cause conflicts between unit test runs. The AMD pattern also simplifies namespace creation, provides better documentation, and reduces file-include-order dependencies.
 
 
 ## Responsive Design
 
-There is no mobile web, all functionality should be available to all of our supported browsers/devices provided by the same HTML/CSS/JavaScript.
+There is no mobile web, there is no `http://m.webmdhealth.com` site, all functionality should be available to all of our supported browsers/devices provided by the same 
 
-For browsers that support CSS media queries, our pages should render and look/work well at any resolution from 320px to 997px+ without requiring users to zoom in and out and without any nasty horizontal scrolling.
+HTML/CSS/JavaScript.
 
-We do not have site-wide breakpoints for "mobile" or "tablet" or "desktop" - let the content and layout on individual pages drive the layout decisions for specific content areas.
+For browsers that support CSS media queries, our pages should render and look/work well at any resolution from 320px to 997px+.
+
+We do not have site-wide breakpoints for "mobile" or "tablet" or "desktop" - let the content and layout on individual pages drive the layout decisions.
 
 ### A Lot of Media Queries?
 
@@ -990,14 +900,12 @@ Keyboard - some people are unable to use, or prefer not to use the mouse or trac
 Screenreader
 
 * Offscreen text is a last resort for accessibility. Ask yourself, are you giving the screenreader context that everyone should get?
-* 
-*
 
-### Section 508(c) Compliance
+### VPATs
 
 [VPATs for our products](http://sharepoint.webmd.net/privateportals/HealthServices/ProjectMgmt/ets/Shared%20Documents/Forms/AllItems.aspx?RootFolder=http%3a%2f%2fsharepoint%2ewebmd%2enet%2fprivateportals%2fHealthServices%2fProjectMgmt%2fets%2fShared%20Documents%2fVPATs&FolderCTID=0x0120007D8B64EDF19CCE48B01E97AD2B0B3CAE)
 
-This is the list of tests we need to verify to report that we are technically compliant with 508(c). ___New applications MUST conform to these rules.___
+This is the list of tests we need to verify to report that we are technically compliant with 508C. ___New applications MUST conform to these rules.___
 
 * (a) A text equivalent for every non-text element shall be provided (e.g., via "alt", "longdesc", or in element content).
 ___this is not needed if the non-text element is just used for styling and has no semantic value___
@@ -1013,26 +921,30 @@ ___Just avoid server-side image maps altogether___
 * (i) Frames shall be titled with text that facilitates frame identification and navigation.
 * (j) Pages shall be designed to avoid causing the screen to flicker with a frequency greater than 2 Hz and lower than 55 Hz.
 ___We've never seen this to be an issue on our site___
-* (k) A text-only page, with equivalent information or functionality, shall be provided to make a web site comply with the provisions of this part, when compliance cannot be accomplished in any other way. The content of the text-only page shall be updated whenever the primary page changes.
-* (l) When pages utilize scripting languages to display content, or to create interface elements, the information provided by the script shall be identified with functional text that can be read by Assistive Technology.
-* (m) When a web page requires that an applet, plug-in or other application be present on the client system to interpret page content, the page must provide a link to a plug-in or applet that complies with §1194.21(a) through (l).
+* (k) A text-only page, with equivalent information or functionality, shall be provided to make a web site comply with the provisions of this part, when compliance 
+
+cannot be accomplished in any other way. The content of the text-only page shall be updated whenever the primary page changes.
+* (l) When pages utilize scripting languages to display content, or to create interface elements, the information provided by the script shall be identified with 
+
+functional text that can be read by Assistive Technology.
+* (m) When a web page requires that an applet, plug-in or other application be present on the client system to interpret page content, the page must provide a link to 
+
+a plug-in or applet that complies with §1194.21(a) through (l).
 ___Just avoid applets and plugins (no more Flash)___
-* (n) When electronic forms are designed to be completed on-line, the form shall allow people using Assistive Technology to access the information, field elements, and functionality required for completion and submission of the form, including all directions and cues.
+* (n) When electronic forms are designed to be completed on-line, the form shall allow people using Assistive Technology to access the information, field elements, and 
+
+functionality required for completion and submission of the form, including all directions and cues.
 * (o) A method shall be provided that permits users to skip repetitive navigation links.
 * (p) When a timed response is required, the user shall be alerted and given sufficient time to indicate more time is required.
 
 
-
-
 ## Performance
-
-
 
 ### Optimize Images
 
-Use [tinypng](tinypng.com) or similar tool to compress `png` files and speed up downloads.
+Use [tinypng](tinypng.com) or similar tool to compress `png` (and other image) files to speed up downloads.
 
-### Make Fewer HTTP Requests
+### Limit # of http requests
 
 * Combine multiple icons/graphics into one download with [CSS sprites](http://css-tricks.com/css-sprites/).
 * Combine CSS requests using .LESS includes
@@ -1042,9 +954,9 @@ Use [tinypng](tinypng.com) or similar tool to compress `png` files and speed up 
     * Consider embedding page-specific JavaScript files in HTML response
     * Consider embedding page-specific CSS files in HTML response
 
-### Maximize Cachability
+### Maximize cacheability
 
-Referenced CSS, JavaScript and image files will automatically contain caching headers. This is configured in IIS.
+Referenced CSS, JavaScript and image files will automatically contain caching headers.
 
 Can your AJAX request be cached client-side (with HTTP caching)? If so, add the proper HTTP headers server-side.
 
@@ -1052,7 +964,7 @@ Can your AJAX request be cached client-side (with HTTP caching)? If so, add the 
 
 CSS in the `head`, scripts at the bottom of the `body`.
 
-### Do Not Depend on JavaScript for Initial Page Render
+### Do not depend on JavaScript for initial Render
 
 The following is from Twitter(https://blog.twitter.com/2012/improving-performance-twittercom)
 
@@ -1061,51 +973,53 @@ The following is from Twitter(https://blog.twitter.com/2012/improving-performanc
 > There are a variety of options for improving the performance of our JavaScript, but we wanted to do even better. We took the execution of JavaScript completely out of our render path. By rendering our page content on the server and deferring all JavaScript execution until well after that content has been rendered, we’ve dropped the time to first Tweet to one-fifth of what it was.
 
 
-## Working with Designers
+## Working with the Design Team
 
-do not expect (or wait for) pixel-perfect design
-do not expect the site to look the same on different browsers
-    it should look consistent within any single browser though.
-    user's should be able to accomplish everything they need to with whatever supported browser they are using.
-question fidelity of designs
-don't code exactly to mockups. look for opportunities to leverage standard styles
-collaborate
-Design _mobile first_. It is more difficult to scale up than to scale down.
+Designers should be considered an integral part of our development teams. They have great knowledge of both visual and user experience design. It's important to collaborate with the design team when iterating on product features. 
+
+Mockups are great but they shouldn't be used to replace face-to-face communication.
+
+Do not expect (or wait for) pixel-perfect mockups. Question the fidelity of design mockups. Don't necessarily code exactly to mockups. Look for opportunities to leverage standard styles.
+
+Do not expect the site to look the same on different browsers.
+* It should look consistent within any single browser though.
+* User's should be able to accomplish everything they need to with whatever supported browser they are using.
 
 
 ## Tools
 
-* [Web Essentials](http://visualstudiogallery.msdn.microsoft.com/07d54d12-7133-4e15-becb-6f451ea3bea6) Visual Studio Plugin - provides enhanced .LESS and JavaScript code editor support
+* Web Essentials Visual Studio Plugin - provides enhanced .LESS and JavaScript code editor support
 * [DOM Monster](http://mir.aculo.us/dom-monster/) - analyze markup quality
 * [WebPageTest](http://www.webpagetest.org)
 * [Fiddler2](http://fiddler2.com/) - web debugging proxy. Shape local HTTP traffic to more closely match site usage in production environment.
 * f12 (browser dev tools)
-* Sublime - ;P hella fast CSS/JS editing, JSHint/LESS/Emmet. cool with the kids.
-
-
-
-Consistent Developer Tool Settings
-    JsHint
-    .LESS tools
-    VS2012 text editor settings
-    Sublime text editor settings
 
 ## References
 
-This guide borrows heavily from around the net
-
-[Nicholas Zakas](https://www.twitter.com/slicknet)' book [Maintainable Javascript](http://www.amazon.com/Maintainable-JavaScript-ebook/dp/B0082CXEB0).
+This guide borrows heavily from around the net and [Nicholas Zakas](https://www.twitter.com/slicknet)' book [Maintainable Javascript](http://www.amazon.com/Maintainable-JavaScript-ebook/dp/B0082CXEB0).
 
 http://taitems.github.io/Front-End-Development-Guidelines/
 http://isobar-idev.github.io/code-standards/
 http://www.mediawiki.org/wiki/Front-End_Coding_Standards
 
-https://github.com/bitmap/less-style
-https://github.com/objectfoo/js-style/blob/master/guide.md
+
+
+<!--
 
 ## TODO
 
+CSS Specificity Wars (http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html)
+
+Developer settings
+    JsHint
+    .LESS tools
+    VS2012 text editor settings
+
+
+IE8 represents ~40% of our traffic today.
+
 General
+    Pattern Library
     Consistency
     Hacks will break, prefer progressive enhancement
     Browsers are different, adopt a development stratagy to embrace this and not try to patch over it
@@ -1115,12 +1029,41 @@ Use the right technology for the job
         Transitions and animations
 HTML
     Avoid adding tags just to style
+    custom attributes
+        data-
+        can be styled "[data-expanded=true]" works in all of our supported browsers
+        all lowercase
 
+JavaScript
+    Javascript should be a last resort.
+    Style Guide
+
+    For new pages, include script references at the bottom of the markup
+        improves performance - *performance link*
+        simplifies code - no longer need $(document).ready event in most cases
+    Understand scoping and closures
+    Understand browser dom api
+    Use JS to manage state, not style
+        
+    jsHint
+        Shared WHS settings
+    Modular
+        AMD
+        
+    Do not pollute the global namespace
+        Global objects are bad, avoid them.
+    Prefer scripts that do not expose any global api
+        When that isn't possible, create as small of an API as possible
+        Changing an existing JavaScript API is expensive
+        *JS maintenance is hard, we don't have a compiler to enforce correctness like C#
+    Prefer small decoupled modules to large monolithic applications
+    Do not reach for a third-party library as a first solution
+    Do not use jQuery for everything
+        Our proliferation of dependencies on jQuery have prevented us from updating versions since
+
+    
 Progressive Enhancement
 
-    Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
-
-
-
-
+	Nice-to-have features can be considered progressive enhancements and excluded from less capable browsers. 
+-->
 
